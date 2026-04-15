@@ -1,0 +1,294 @@
+
+Generics 
+=========
+Arrays are typesafe.
+It means we can give guarantee that what type of elements are present in array.
+ex:
+	int[] arr = new int[10];
+	arr[0]=10;
+	arr[1]=20;
+	arr[3]=30;
+
+If there is a requirement to store String values then it is recommanded to use String array.
+ex:
+	String[] sarr = new String[10];
+	sarr[0]="Hi";
+	sarr[1]="Hello";
+	sarr[2]=10; // invalid 
+
+At the time of retrieving the data from array we don't need to perform typecasting.
+ex:
+	String[] sarr = new String[10];
+	sarr[0]="Hi";
+	sarr[1]="Hello";
+	-
+	-
+	String val1 = sarr[0];
+
+Collections are not typesafe.
+It means we can't give guarantee that what type of elements are present in Collections.
+
+If requirement is there to store String values then it is never recommanded to use ArrayList because we won't get any compile time error or runtime error but sometimes our program get failure.
+ex:
+	ArrayList al = new ArrayList();
+	al.add("Hi");
+	al.add("Hello");
+	al.add(10);
+
+At the time of retrieving the data compulsary we need to perform typecasting.
+ex:
+	ArrayList al = new ArrayList();
+	al.add("Hi");
+	al.add("Hello");
+	al.add(10);
+	-
+	String val1 = (String)al.get(0);
+
+To overcome these limitations Sun Micro System introduced Generics concept in 1.5 version.
+
+The main objective of Generics are 
+
+1) To make Collections as typesafe.
+
+2) To avoid typecasting problem.
+
+java.util Package
+==================
+
+Q) What is the difference between Arrays and Collections?
+
+Arrays						Collections
+-----------					------------
+It is a collection of homogeneous 		It is a collection of homogeneous 
+data elements.					and hetrogeneous elements.
+
+It is fixed in size.				It is growable in nature.
+
+Performance point of view arrays are 		Memory point of view Collections are
+recommand to use.				recommanded to use.
+
+It is not implemented based on data 		It is implemented based on data 
+structure concept.Hence we can't expect		structure concept. Hence we can expect
+any ready made method.				ready made methods.
+
+It holds primitive types and object types.	It holds only object types.
+
+
+Collection Framework 
+====================
+It defines several utility classes and interfaces to represent group of objects in a single entity.
+ex:
+	Java			C++
+	------			--------
+	Collection		Containers
+	Collection Framework	STL (Standard Template Libraries)
+
+
+
+Collection 
+==========
+It is an interface which is present in java.util package.
+
+It is a root interface for entire Collection Framework.
+
+If we want to represent group of individual objects in a single entity then we need to use Collection interface.
+
+It contains some common methods which are available for every Collection object.
+
+ex:
+	cmd> javap   java.util.Collection
+
+	public abstract boolean add(E);
+ 	public abstract boolean remove(java.lang.Object);
+	public abstract int size();
+  	public abstract boolean isEmpty();
+  	public abstract boolean contains(java.lang.Object);
+	public abstract void clear();
+	public abstract boolean containsAll(java.util.Collection<?>);
+  	public abstract boolean addAll(java.util.Collection<? extends E>);
+  	public abstract boolean removeAll(java.util.Collection<?>);
+	and etc.
+
+List 
+=====
+It is a child interface of Collection interface.
+	
+If we want to represent group of individual objects where duplicates are allowed and order is preserved then we need to use List interface.		
+
+Diagram : class41.2
+
+
+
+
+ArrayList 
+==========
+The underlying data structure is resizable array or growable array.
+
+Duplicate objects are allowed.
+
+Insertion order is preserved.
+
+Hetrogeneous objects are allowed.
+
+Null insertion is possible.
+
+It implements List, Serializable, Cloneable and RandomAccess interface.
+
+ex:
+---
+import java.util.*;
+class Test 
+{
+	public static void main(String[] args)
+	{
+		ArrayList al =new ArrayList();
+		al.add("one");
+		al.add("two");
+		al.add("three");
+		System.out.println(al); //[one,two,three]
+		
+		al.add("one");
+		System.out.println(al); //[one,two,three,one]
+		
+		al.add(10);
+		System.out.println(al); //[one,two,three,one,10]
+		
+		al.add(null);
+		System.out.println(al); //[one,two,three,one,10,null]
+	}
+}
+
+ex:
+---
+import java.util.*;
+class Test 
+{
+	public static void main(String[] args)
+	{
+		ArrayList<String> al =new ArrayList<String>();
+		al.add("one");
+		al.add("two");
+		al.add("three");
+		System.out.println(al); //[one,two,three]
+		
+		al.add("one");
+		System.out.println(al); //[one,two,three,one]
+		
+		al.add(null);
+		System.out.println(al); //[one,two,three,one,null]
+	}
+}
+
+ex:
+---
+import java.util.*;
+class Test 
+{
+	public static void main(String[] args)
+	{
+		ArrayList<String> al =new ArrayList<String>();
+		al.add("one");
+		al.add("two");
+		al.add("three");
+		
+		
+		System.out.println(al.isEmpty()); // false 
+		
+		System.out.println(al.contains("one")); // true 
+		
+		al.add(2,"gogo");
+		System.out.println(al); //[one,two,gogo,three]
+		
+		al.remove("gogo");
+		System.out.println(al); //[one,two,three]
+		
+		al.clear();
+		System.out.println(al); // []
+	}
+}
+
+ex:
+---
+import java.util.*;
+class Test 
+{
+	public static void main(String[] args)
+	{
+		ArrayList<String> al =new ArrayList<String>();
+		al.add("one");
+		al.add("two");
+		al.add("three");
+		
+		for(int i=0;i<al.size();i++)
+		{
+			System.out.println(al.get(i));
+		}
+	
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

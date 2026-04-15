@@ -1,0 +1,508 @@
+Q) A frog felt down in a well of 10 meters. Every day frog tries to come out from the well. He jumps 2 meters and rollback 1 meter. So write a java program to find out in how many days a frog will come out from the well.
+
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		int wellLength = 10;
+		int jumps = 2;
+		int rollback = 1;
+		
+		int currentPosition=0;
+		int days=0;
+		
+		while(currentPosition<wellLength)
+		{
+			currentPosition+=jumps;
+			if(currentPosition>wellLength)
+			{
+				break;
+			}
+			currentPosition-=rollback;
+			days++;
+		}
+		
+		System.out.println("In "+days+" days frog come out of the well");
+	}
+}
+
+
+iii) for loop 
+==============
+It executes the source code how long our condition is true.
+
+syntax:
+-------
+	for(initialization;condition;incremenet/decrement)
+	{
+		-
+		- //code to be execute 
+		-
+	}
+
+Note:
+-----
+If number of iterations are known by the user then we need to use for loop.
+
+If number of iterations are not known by the user then we need to use while loop.
+
+If number of iterations are not known by the user but code must execute atleast for one time then we need to use do while loop.
+
+ex:
+---
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		for(int i=1;i<=10;i++)
+		{
+			System.out.print(i+" ");//infinite 1
+			i--;
+		}
+	}
+}
+
+ex:
+---
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		for(int i=1;i<=10;i++)
+		{
+			if((i/2)*2==i)
+				System.out.print(i+" "); // 2 4 6 8 10
+		}
+	}
+}
+
+ex:
+---
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		for(int i=1;i<=10;i++)
+		{
+			if(i%2==0)
+			{
+				System.out.print(i+" "); //2 6 10
+				
+				i+=2;
+			}
+		}
+	}
+}
+
+ex:
+---
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		for(;;)
+		{
+			System.out.print("Hello "); //infinite Hello 
+		}
+	}
+}
+
+
+
+Q) Write a java program to check given number is prime or not?
+
+input:
+	5
+output:
+	It is a prime number 
+
+import java.util.Scanner;
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Enter the number :");
+		int n = sc.nextInt();
+		
+		boolean flag=true;
+		
+		for(int i=2;i<=n/2;i++)
+		{
+			if(n%i==0)
+			{
+				flag=false;
+				break;
+			}
+		}
+		if(flag==true)
+			System.out.println("It is a prime number");
+		else
+			System.out.println("It is not a prime number");
+	}
+}
+
+Q) Write a java program to display prime numbers between 1 to 100?
+
+output:
+	2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 
+	43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97
+
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		for(int n=2;n<=100;n++)
+		{
+			boolean flag=true;
+		
+			for(int i=2;i<=n/2;i++)
+			{
+				if(n%i==0)
+				{
+					flag=false;
+					break;
+				}
+			}
+			if(flag==true)
+				System.out.print(n+" ");
+		}
+	}
+}
+
+Q) Write a java program to find out given number is perfect or not?
+
+input:
+	6
+
+output:
+	It is a perfect number 
+
+
+import java.util.Scanner;
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the number :");
+		int n = sc.nextInt(); // 6 
+		
+		int sum=0;
+		for(int i=1;i<n;i++)
+		{
+			if(n%i==0)
+			{
+				sum+=i;
+			}
+		}
+		if(sum==n)
+			System.out.println("It is a perfect number");
+		else
+			System.out.println("It is not a perfect number");
+	}
+}
+
+Q) Write a java program to find out GCD (Greatest Common Divisor) of two numbers?
+
+input:
+	12  18
+output:
+	6
+
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		int a=12,b=18,gcd=0;
+		
+		for(int i=1;i<=a && i<=b;i++)
+		{
+			if((a%i==0) && (b%i==0))
+			{
+				gcd=i;
+			}
+		}
+		System.out.println("GCD of two number is ="+gcd);
+	}
+}
+
+Loop Patterns
+=============
+
+1) 
+1 1 1 1 
+2 2 2 2
+3 3 3 3
+4 4 4 4
+
+
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		//rows
+		for(int i=1;i<=4;i++)
+		{
+			//cols
+			for(int j=1;j<=4;j++)
+			{
+				System.out.print(i+" "); 
+			}
+			//new line 
+			System.out.println();
+		}
+	}
+}
+
+2)
+
+1 2 3 4 
+1 2 3 4 
+1 2 3 4
+1 2 3 4
+
+
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		//rows
+		for(int i=1;i<=4;i++)
+		{
+			//cols
+			for(int j=1;j<=4;j++)
+			{
+				System.out.print(j+" "); //1 2 3 4 
+			}
+			//new line 
+			System.out.println();
+		}
+	}
+}
+
+3) 
+
+* * * * 
+* * * * 
+* * * *
+* * * *
+
+
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		//rows
+		for(int i=1;i<=4;i++)
+		{
+			//cols
+			for(int j=1;j<=4;j++)
+			{
+				System.out.print("* ");
+			}
+			//new line 
+			System.out.println();
+		}
+	}
+}
+
+4) 
+
+4 4 4 4
+3 3 3 3 
+2 2 2 2 
+1 1 1 1
+
+
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		//rows
+		for(int i=4;i>=1;i--)
+		{
+			//cols
+			for(int j=1;j<=4;j++)
+			{
+				System.out.print(i+" ");
+			}
+			//new line 
+			System.out.println();
+		}
+	}
+}
+
+5) 
+
+* * * * 
+*     * 
+*     * 
+* * * *
+
+
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		//rows
+		for(int i=1;i<=4;i++)
+		{
+			//cols
+			for(int j=1;j<=4;j++)
+			{
+				if(i==1 || i==4 || j==1 || j==4)
+				{
+					System.out.print("* ");
+				}
+				else
+				{
+					System.out.print("  ");
+				}
+			}
+			//new line 
+			System.out.println();
+		}
+	}
+}
+
+6) 
+    *
+    *
+* * * * *
+    *
+    *
+
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		//rows
+		for(int i=1;i<=5;i++)
+		{
+			//cols
+			for(int j=1;j<=5;j++)
+			{
+				if(i==3 || j==3)
+				{
+					System.out.print("* ");
+				}
+				else
+				{
+					System.out.print("  ");
+				}
+			}
+			//new line 
+			System.out.println();
+		}
+	}
+}
+
+7) 
+
+* - - - 
+- * - - 
+- - * - 
+- - - * 
+
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		//rows
+		for(int i=1;i<=4;i++)
+		{
+			//cols
+			for(int j=1;j<=4;j++)
+			{
+				if(i==j)
+				{
+					System.out.print("* ");
+				}
+				else
+				{
+					System.out.print("- ");
+				}
+			}
+			//new line 
+			System.out.println();
+		}
+	}
+}
+
+
+8)
+
+* - - - *
+- * - * - 
+- - * - - 
+- * - * - 
+* - - - * 
+
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		//rows
+		for(int i=1;i<=5;i++)
+		{
+			//cols
+			for(int j=1;j<=5;j++)
+			{
+				if(i==j || i+j==6)
+				{
+					System.out.print("* ");
+				}
+				else
+				{
+					System.out.print("- ");
+				}
+			}
+			//new line 
+			System.out.println();
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,117 @@
+Method Overloading 
+==================
+Having same method name with different parameters in a single class is called method overloading.
+
+Method overloading reduces complexity of the programming.
+
+All the methods present in a class are called overloaded methods.
+
+Method resolution will taken care by a compiler based on reference type.
+
+ex:
+---
+class MeeSeva 
+{
+	//overloaded methods 
+	public void search(int voterId)
+	{
+		System.out.println("Details found via voterId");
+	}
+	public void search(String houseNo)
+	{
+		System.out.println("Details found via houseNo");
+	}
+	public void search(long aadharNo)
+	{
+		System.out.println("Details found via aadharNo");
+	}
+}
+class Test
+{
+	public static void main(String[] args)
+	{
+		MeeSeva ms = new MeeSeva();
+		ms.search(1234);
+		ms.search("1-7-45/7/1");
+		ms.search(123456L);
+	}
+}
+
+Method overriding 
+=================
+Having same method name with same parameters/signatures in two different classes is called method overriding.
+
+Methods present in parent class are called overridden methods.
+
+Methods present in child class are called overriding methods.
+
+Method resolution will taken care by a JVM based on runtime object.
+
+ex:
+---
+class Parent 
+{
+	//overridden methods 
+	public void property()
+	{
+		System.out.println("Cash+Gold+Land");
+	}
+	public void marry()
+	{
+		System.out.println("Trisha");
+	}
+}
+class Child extends Parent 
+{
+	//overriding methods 
+	@Override 
+	public void marry()
+	{
+		System.out.println("Rashmika");
+	}
+}
+class Test 
+{
+	public static void main(String[] args)
+	{
+		Parent p =new Parent();
+		p.property(); // Cash+Gold+Land
+		p.marry(); // Trisha 
+		
+		Child c = new Child();
+		c.property(); // Cash+Gold+Land
+		c.marry(); // Rashmika 
+		
+		Parent p1 = new Child();
+		p1.property(); // Cash+Gold+Land
+		p1.marry(); // Rashmika
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

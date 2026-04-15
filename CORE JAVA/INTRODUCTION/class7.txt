@@ -1,0 +1,256 @@
+Identifiers 
+===========
+A name given to a program elements is called identifier.
+
+Program elements are classes, interfaces, variables, methods, packages and etc.
+
+ex:
+	class Test
+	{
+		public static void main(String[] args)
+		{
+			int x = 10;
+			
+			System.out.println(x); 
+		}
+	}
+
+	Here Test, main, String, args, x, System, println are identifiers.
+
+
+Rules to declare an identifiers
+-------------------------------
+
+Rule1:
+-----
+	Identifier will accept following characters.
+	ex:
+		A-Z
+		a-z
+		0-9
+		_
+		$ 
+
+Rule2:
+------
+	If we take other characters then we will get compile time error.
+	ex:
+		int empId;
+		int emp_id;
+		int emp$alary; 
+		int dept#no; // invalid 
+
+Rule3:
+------
+	Identifier must and should starts with alphabet, underscore or dollar symbol
+	but not with digit.
+	ex:	
+		int emp_Id1;
+		int $alary; 
+		int _abcd; 
+		int 1abcd; //invalid 
+
+Rule4:
+------
+	Every identifier is a case sensitive.
+	ex:
+		int a;
+		int A;
+
+Rule5:
+------
+	We can't take reserved words as an identifier.
+	ex:
+		int if; //invalid 
+		int else; //invalid 
+		int for; //invalid 
+
+Rule6:
+------
+	There is no length limit for an identifiers but it is not recommanded to 
+	take more than 15 characters.
+
+
+Reserved Words 
+==============
+There are some identifiers which are reserved to associate some functionality or meaning such type of identifiers are called reserved words.
+
+Java supports 70 reserved words and it is classified into two types. 
+
+Diagram: class7.1
+
+
+
+Used keywords with respect to flow control
+---------------------------------------------
+if
+else
+switch
+case
+default
+for
+while
+do
+break
+continue
+return
+
+Used keywords with respect to Access modifiers
+-----------------------------------------
+public
+private
+protected
+
+Used keywords with respect to classes and interfaces
+--------------------------------------
+class
+interface
+enum
+extends
+implements
+abstract
+final
+static
+strictfp
+sealed
+permits
+
+Used keywords with respect to exception handling 
+---------------------------
+try
+catch
+finally
+throw
+throws
+assert
+
+Used keywords with respect to variables and methods
+--------------------------------
+void
+var
+new
+this
+super
+volatile
+transient
+synchronized
+
+
+Used keywords with respect to datatypes.
+----------------------------------------
+int
+long
+short
+byte
+float
+double
+char
+boolean
+
+
+Used keywords with respect to package
+---------------------------------------
+package
+import
+module  (Java 9+)
+
+
+Used keywords with respect to object and reference handling
+--------------------------------
+instanceof
+typeof   (reserved but unused in Java)
+yield    (Java 14+ switch expression)
+record   (Java 16+)
+native
+
+
+Used keywords with respect to misc reserved words 
+--------------------------------------------
+requires  (Java 9 modules)
+exports   (Java 9 modules)
+opens     (Java 9 modules)
+uses      (Java 9 modules)
+provides  (Java 9 modules)
+with      (Java 9 modules)
+to        (Java 9 modules)
+non-sealed (Java 17+)
+
+
+
+
+
+Interview Question 
+==================
+
+Q) What is the difference between JDK, JRE and JVM ?
+
+JDK
+----
+JDK stands for Java Development Kit.
+JDK is a installable software which consist Java Runtime Environment (JRE), Java Virtual Machine (JVM), Compiler (javac), Interpreter (java), an Archiever (.jar), document generator (javadoc) and other tools needed for java application development.
+
+JRE 
+----
+JRE stands for Java Runtime Environment.
+JRE is a part of a JDK which provides very good environment to run java applications.
+
+JVM 
+----
+JVM stands for Java Virtual Machine.
+JVM is a part of a JRE which is used to execute our program line by line procedure and It converts our byte code to machine code.
+
+Diagram: class7.2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

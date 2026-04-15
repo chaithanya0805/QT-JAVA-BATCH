@@ -1,0 +1,710 @@
+Q)
+
+A company works 10 hours per day.
+Employees spend 30% of the time in meetings and the rest working on projects.
+Write a Java program to calculate meeting time and project work time.
+
+class Example16 
+{
+	public static void main(String[] args) 
+	{
+		int totalHours = 10;
+		
+		int meetingTime = totalHours*30/100;
+		
+		int workTime = totalHours - meetingTime;
+		
+		System.out.println("Total Hours : "+totalHours);
+		System.out.println("Meeting Time Hours :"+meetingTime);
+		System.out.println("Working Time Hours :"+workTime);
+	}
+}
+
+Q) Write a java program to accept date of birth of a person and find out it's age?
+
+import java.time.LocalDate;
+import java.time.Period;
+class Example17 
+{
+	public static void main(String[] args) 
+	{
+		LocalDate dob = LocalDate.of(2004,3,21);
+		
+		LocalDate currentDate = LocalDate.now();
+		
+		Period p = Period.between(dob,currentDate);
+		
+		int age = p.getYears();
+		
+		System.out.println("Person age is ="+age);
+	}
+}
+
+Q) Write a java program to display Hello World without using println() stmt?
+
+import java.io.IOException;
+class Example18
+{
+	public static void main(String[] args)throws IOException
+	{
+		String str="Hello World";
+		System.out.write(str.getBytes());
+	}
+}
+
+
+
+Types of blocks 
+===============
+A block is a collection/set of statements which is enclosed in a curly braces i.e {}.
+
+We have three types of blocks in java.
+
+1) Instance block 
+
+2) Static block 
+
+3) Local block 
+
+1) Instance block
+------------------
+It is used to initialize the instance variables.
+
+It is executed when we create a instance of a class.
+
+It must and should declare immediately after the class but not inside methods and constructors.
+
+We can declare instance block as follow.
+
+syntax:
+-------
+	// instance block 
+	{
+		- // set of statements
+	}
+
+ex:1
+----
+class Test
+{
+	//instance block 
+	{
+		System.out.println("instance-block");
+	}
+	
+	public static void main(String[] args) 
+	{
+		System.out.println("main-method");	
+	}
+}
+o/p:
+	main-method 
+
+ex:
+---
+class Test
+{
+	//instance block 
+	{
+		System.out.println("instance-block");
+	}
+	
+	public static void main(String[] args) 
+	{
+		System.out.println("main-method");
+		Test t = new Test();
+	}
+}
+o/p:
+	main-method 
+	instance-block 
+
+ex:
+---
+class Test
+{
+	//instance block 
+	{
+		System.out.println("instance-block");
+	}
+	
+	public static void main(String[] args) 
+	{
+		Test t1= new Test();
+		System.out.println("main-method");
+		Test t2 = new Test();
+	}
+}
+o/p:
+	instance-block 
+	main-method
+	instance-block 
+ex:
+---
+class Test
+{
+	//instance variable 
+	int i;
+	
+	//instance block 
+	{
+		i=100;
+	}
+	
+	public static void main(String[] args) 
+	{
+		Test t = new Test();
+		System.out.println(t.i);//100
+	}
+}
+
+
+2) static block 
+---------------
+It is used to initialize the static variables.
+
+It is execute when class is loaded by the JVM.
+
+It must and should declare immediately after the class using static keyword but not inside methods and constructors.
+
+We can declare static block as follow.
+
+syntax:
+-------
+	// static block 
+	static
+	{	
+		- //set of statements 
+	}
+
+ex:
+---
+class Test
+{
+	//static block 
+	static
+	{
+		System.out.println("static-block");
+	}
+	
+	public static void main(String[] args) 
+	{
+		System.out.println("main-method");
+	}
+}
+o/p:
+	static-block
+	main-method 
+
+ex:
+---
+class Test
+{
+	//instance block 
+	{
+		System.out.println("instance-block");
+	}
+	
+	//static block 
+	static
+	{
+		System.out.println("static-block");
+	}
+	
+	public static void main(String[] args) 
+	{
+		Test t = new Test();
+		System.out.println("main-method");
+	}
+}
+o/p:
+	static-block 
+	instance-block 
+	main-method 
+
+ex:
+---
+class Test
+{
+	//static variables 
+	static int i;
+	
+	//static block 
+	static
+	{
+		i=200;
+	}
+	
+	public static void main(String[] args) 
+	{
+		System.out.println(i); //200
+	}
+}
+
+3) Local blocks
+----------------
+It is used to initialize local variables.
+
+It is executed just like a normal statement.
+
+It must and should declare inside the methods and constructors.
+
+We can declare local block as follow.
+
+syntax:
+------
+	//local block 
+	{
+		- // set of statements 
+	}
+
+ex:
+---
+class Test
+{
+	public static void main(String[] args) 
+	{
+		System.out.println("stmt1");
+		
+		//local block 
+		{
+			System.out.println("local-block");
+		}
+		
+		System.out.println("stmt2");
+	}
+}
+o/p:
+	stmt1
+	local-block
+	stmt2
+
+ex:
+----
+class Test
+{
+	public static void main(String[] args) 
+	{
+		//local variable 
+		int i;
+		
+		//local block 
+		{
+			i=300;
+		}
+		
+		System.out.println(i);//300
+	}
+}
+
+
+
+Operators 
+=========
+It is a symbol which is used to perform some operations on operands.
+ex:
+	c = a + b;
+
+	Here a,b and c are operands.
+	Here = and + are operators.
+
+We have following list of operators in java.
+
+1) Assignment operators 
+
+2) Conditional/Ternary operators 
+
+3) Bitwise operators 
+
+4) Logical operators 
+
+5) Arithmetic operators 
+
+6) Relational operators 
+
+7) Shift operators 
+
+8) Unary operators 
+
+
+1) Assignment operators
+------------------------
+ex:
+---
+class Test
+{
+	public static void main(String[] args)
+	{
+		int i=10;
+		
+		i=20;
+		
+		i=30;
+		
+		System.out.println(i); // 30
+	}
+}
+
+Note:
+------
+	Reinitialization is possible in java.
+
+
+ex:
+---
+class Test
+{
+	public static void main(String[] args)
+	{
+		final int i=10;
+		
+		i=20;
+		
+		i=30;
+		
+		System.out.println(i); // C.T.E 
+	}
+}
+
+
+ex:
+---
+class Test
+{
+	public static void main(String[] args)
+	{
+		int i;
+		i = 1,2,3,4,5;
+		System.out.println(i); // C.T.E 
+	}
+}
+
+ex:
+---
+class Test
+{
+	public static void main(String[] args)
+	{
+		int i,j;
+		i=j=10;
+		System.out.println(i+" "+j);//10 10
+	}
+}
+
+ex:
+---
+class Test
+{
+	public static void main(String[] args)
+	{
+		int i=10;
+		
+		i+=2; // i = i + 2;
+		
+		System.out.println(i); // 12
+	}
+}
+
+ex:
+---
+class Test
+{
+	public static void main(String[] args)
+	{
+		int i=10;
+		
+		i*=3; 
+		
+		System.out.println(i); // 30
+	}
+}
+
+ex:
+---
+class Test
+{
+	public static void main(String[] args)
+	{
+		int i=10;
+		
+		i/=3;
+		
+		System.out.println(i); // 3
+	}
+}
+
+ex:
+---
+class Test
+{
+	public static void main(String[] args)
+	{
+		int i=10;
+		
+		i%=3;
+		
+		System.out.println(i); // 1
+	}
+}
+
+ex:
+---
+class Test
+{
+	public static void main(String[] args)
+	{
+		int i=10;
+		
+		i/=20;
+		
+		System.out.println(i); //0
+	}
+}
+
+ex:
+---
+class Test
+{
+	public static void main(String[] args)
+	{
+		int i=10;
+		
+		i%=20;
+		
+		System.out.println(i); //10
+	}
+}
+
+2) Conditional/Ternary operators 
+---------------------------------
+syntax:
+-------
+	(condition)?value1:value2;
+
+ex:
+--
+class Test
+{
+	public static void main(String[] args)
+	{
+		String str = (true)?"Welcome":"Thankyou";
+		System.out.println(str); 
+	}
+}
+
+ex:
+---
+class Test
+{
+	public static void main(String[] args)
+	{
+		char ch = (false)?'T':'F';
+		System.out.println(ch); // F 
+	}
+}
+
+ex:
+---
+class Test
+{
+	public static void main(String[] args)
+	{
+		boolean b = (5>2)?true:false;
+		System.out.println(b); // true 
+	}
+}
+
+Q) Write a java program to find out greatest of two numbers?
+
+import java.util.Scanner;
+class Test
+{
+	public static void main(String[] args)
+	{
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Enter the first number :");
+		int a = sc.nextInt();
+		
+		System.out.println("Enter the second number :");
+		int b = sc.nextInt();
+		
+		//logic
+		int max = (a>b)?a:b; 
+		
+		System.out.println("Greatest of two numbers is ="+max);
+	}
+}
+
+Q) Write a java program to find out greatest of three numbers ?
+
+import java.util.Scanner;
+class Test
+{
+	public static void main(String[] args)
+	{
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Enter the first number :");
+		int a = sc.nextInt();
+		
+		System.out.println("Enter the second number :");
+		int b = sc.nextInt();
+		
+		System.out.println("Enter the third number :");
+		int c = sc.nextInt();
+		
+		//logic
+		int max = (a>b)?((a>c)?a:c):((b>c)?b:c);
+		
+		System.out.println("Greatest of three numbers is ="+max);
+	}
+}
+
+How to convert decimal number to binary number
+==============================================
+10 - decimal number 
+1010 - binary number 
+
+2|10
+ ---- 0 
+2|5
+ ---- 1 
+2|2 
+ ---- 0 	^
+  1  		|
+-----------------
+1010
+
+class Test
+{
+	public static void main(String[] args)
+	{
+		int decimalNo=10;
+		String binaryNo = Integer.toBinaryString(decimalNo);
+		System.out.println(binaryNo);
+	}
+}
+
+How to convert binary number to decimal number 
+----------------------------------------------
+1010 - binary number 
+10 - decimal number 
+
+	1010 <-----
+
+	0*1 + 1*2 + 0*4 + 1*8
+
+	0 + 2 + 0 + 8
+	
+	10  
+
+ex:
+---
+class Test
+{
+	public static void main(String[] args)
+	{
+		String binaryNo="1010";
+		int decimalNo=Integer.parseInt(binaryNo,2);
+		System.out.println(decimalNo);
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

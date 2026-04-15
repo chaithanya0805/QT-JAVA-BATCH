@@ -1,0 +1,602 @@
+A catch block can handle multiple exceptions.
+
+ex:
+---
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		try
+		{
+			// System.out.println(10/0);
+			
+			/*
+			int[] arr = null;
+			System.out.println(arr[0]);
+			*/
+			
+			Thread.currentThread().setPriority(11);
+		}
+		catch (ArithmeticException | NullPointerException | IllegalArgumentException e)
+		{
+			e.printStackTrace();
+		}
+	}
+}
+
+finally block 
+-------------
+It is never recommanded to maintain cleanup code in try block because if any exception raised then it won't be executed.
+
+It is never recommanded to maintain cleanup code in catch block because if there is no exception in try block then it won't be executed.
+
+We need a place where we can maintain cleanup code and it should execute irrespective of exception raise or not . Such block is called finally block.
+
+syntax:
+------
+	try 
+	{
+		- // Risky code 
+	}
+	catch(Exception e)
+	{
+		- // Error handling code 
+	}
+	finally	
+	{
+		- // Cleanup code 
+	}
+
+ex:
+---
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		try
+		{
+			System.out.println("try-block");
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		finally
+		{
+			System.out.println("finally-block");
+		}
+	}
+}
+
+o/p:
+	try-block 
+	finally-block 
+
+ex
+--
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		try
+		{
+			System.out.println(10/0);
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		finally
+		{
+			System.out.println("finally-block");
+		}
+	}
+}
+o/p:
+	java.lang.ArithmeticException: / by zero
+        at Test.main(Test.java:7)
+	finally-block
+
+ex:
+---
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		try
+		{
+			System.out.println("stmt1");
+			System.out.println(10/0);
+			System.out.println("stmt2");
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		finally
+		{
+			System.out.println("finally-block");
+		}
+	}
+}
+o/p:
+	stmt1
+	java.lang.ArithmeticException: / by zero
+        at Test.main(Test.java:8)
+	finally-block
+
+ex:
+---
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		int i=1;
+		try
+		{
+			i++;
+		}
+		catch (Exception e)
+		{
+			i++;
+		}
+		finally
+		{
+			i++;
+		}
+		System.out.println(i);//3
+	}
+}
+
+ex:
+---
+import java.util.Scanner;
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc = null;
+		try
+		{
+			sc = new Scanner(System.in);
+			System.out.println("Enter the Name :");
+			String name = sc.nextLine();
+			System.out.println("Welcome :"+name);
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		finally
+		{
+			sc.close();
+		}
+	}
+}
+
+Q) What is the difference between final, finally and finalize method ?
+
+
+final 
+-----
+It is a modifier which is applicable for variables, methods and classes.
+
+If we declare any variable as final then reinitialization of that variable is not possible.
+
+If we declare any method as final then overriding of that method is not possible.
+
+If we declare any class as final then creating child class is not possible.  
+
+
+finally
+-------
+It is a block which contains cleanup code and it should execute irrespective of exception raise or not. Such type of block is called finally block.
+
+
+finalize
+--------
+It is a method called by garbage collector just before destroying an object for cleanup activity.
+
+
+Garbage Collector 
+=================
+It is also known as deamon thread.
+
+It is a leight weight thread which runs in a background to provide services.
+
+It is a programming feature for memory allocation and deallocation.
+
+There are two ways to call garbage collector in java.
+
+1) System.gc() 
+
+2) Runtime.getRuntime().gc()
+
+
+1) System.gc()
+--------------
+class Test 
+{
+	//instance variable 
+	int i=10;
+	
+	public static void main(String[] args) 
+	{
+		Test t = new Test();
+		System.out.println(t.i); // 10
+		
+		t = null;
+		System.gc();
+	}
+	public void finalize()
+	{
+		System.out.println("finalize method");
+	}
+}
+
+
+2) Runtime.getRuntime().gc()
+----------------------------
+class Test 
+{
+	//instance variable 
+	int i=10;
+	
+	public static void main(String[] args) 
+	{
+		Test t = new Test();
+		System.out.println(t.i); // 10
+		
+		t = null;
+		Runtime.getRuntime().gc();
+	}
+	public void finalize()
+	{
+		System.out.println("finalize method");
+	}
+}
+
+
+A try with finally combination is valid in java.
+
+ex:
+---
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		try
+		{
+			System.out.println("try-block");
+		}
+		finally
+		{
+			System.out.println("finally-block");
+		}
+	}
+}
+
+
+ex:
+---
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		try
+		{
+			System.out.println(10/0);
+		}
+		finally
+		{
+			System.out.println("finally-block");
+		}
+	}
+}
+o/p:
+	finally-block 
+	ArithmeticException 
+
+
+
+throw statement 
+===============
+Sometimes we will create exception object explicitly and handover to JVM manually by using throw statement.
+
+ex:
+	throw new ArithmeticException("Don't divide by zero");
+
+
+Diagram: class39.1
+
+
+throws statement
+=================
+If any checked exception raised in our program we must and should handle that exception by using try and catch block or by using throws statement.
+
+ex:
+---
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		try
+		{
+			Thread.sleep(5000);
+			System.out.println("Welcome to Java World");
+		}
+		catch (InterruptedException ie)
+		{
+			ie.printStackTrace();
+		}
+		
+	}
+}
+
+ex:
+---
+class Test 
+{
+	public static void main(String[] args)throws InterruptedException
+	{
+		Thread.sleep(5000);
+		System.out.println("Welcome to Java World");
+	}
+}
+
+Userdefined Exceptions 
+======================
+Exceptions which are created by the user based on the application requirements are caleld user defined exceptions or custom exceptions.
+ex:
+	NoPracticeException 
+	NoInterestInJavaException 
+	NoJobException
+	and etc.
+
+ex:
+---
+import java.util.Scanner;
+class TooYoungException extends RuntimeException 
+{
+	TooYoungException(String s)
+	{
+		super(s);
+	}
+}
+class TooOldException extends RuntimeException 
+{
+	TooOldException(String s)
+	{
+		super(s);
+	}
+}
+class Test 
+{
+	public static void main(String[] args)
+	{
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the age :");
+		int age = sc.nextInt();
+		
+		if(age<18)
+			throw new TooYoungException("U r not eligible to vote");
+		else
+			throw new TooOldException("U r eligible to vote ");
+	}
+}
+
+try-with-resources in Java
+==========================
+A try-with-resources introduced in Java 7.
+
+A try-with-resources is a try block which contains one or more resources.
+
+A try-with-resources ensures that each rosource must be closed at the end of the stmt.
+
+syntax:
+------
+	try()
+	{
+		- // risky code
+	}
+
+	{
+		- //error handling code 
+	}
+
+ex:
+---
+import java.util.Scanner;
+class Test 
+{
+	public static void main(String[] args)
+	{
+		try(Scanner sc = new Scanner(System.in);)
+		{
+			System.out.println("Enter the Name :");
+			String name = sc.nextLine();
+			System.out.println("Welcome :"+name);
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
+}
+
+
+java.io package
+================
+
+File 
+=====
+It checks is there any "abc.txt" file already exist or not. If it is exist then 'f' simply refers to that file. If not exist then it won't create a physical file.
+
+ex:
+	File f = new File("abc.txt");
+
+
+ex:
+---
+import java.io.File;
+class Test 
+{
+	public static void main(String[] args)
+	{
+		File f = new File("abc.txt");
+		System.out.println(f.exists());//false 
+	}
+}
+
+A File object is used to create a physical file.
+
+ex:
+---
+import java.io.*;
+class Test 
+{
+	public static void main(String[] args)
+	{
+		try
+		{
+			File f = new File("abc.txt");
+			System.out.println(f.exists());//false
+		
+			f.createNewFile();
+			System.out.println(f.exists());//true 
+		}
+		catch (IOException ioe)
+		{
+			ioe.printStackTrace();
+		}
+	}
+}
+
+A File object can be used to create a directory.
+
+ex:
+---
+import java.io.*;
+class Test 
+{
+	public static void main(String[] args)
+	{
+			File f = new File("ihub");
+			System.out.println(f.exists());//false
+		
+			f.mkdir();
+			System.out.println(f.exists());//true 
+	}
+}
+
+Q) Write a java program to create "cricket" folder and inside that folder create "abc.txt" file?
+
+import java.io.*;
+class Test 
+{
+	public static void main(String[] args)throws Exception
+	{
+		File f1 = new File("cricket");
+		f1.mkdir();
+		
+		File f2 = new File("cricket","abc.txt");
+		f2.createNewFile();
+		
+		System.out.println("Please check the location");
+	}
+}
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

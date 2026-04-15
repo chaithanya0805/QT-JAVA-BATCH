@@ -1,0 +1,18 @@
+Abstraction 
+===========
+Hiding internal implementation and highlighting the setup of services is called abstraction. 
+
+Using abstract classes and interfaces we can achieve abstraction.
+
+The best example of abstraction is GUI ATM Machine where bank people will hide internal implementation and they will highlight set of services like banking , withdrawl, mini statement and etc.
+
+The main advantages of abstraction are 
+
+1) It gives security because it hides internal implementation from outsider.
+
+2) Enhancement becomes more easy without effecting enduser they can perform any 
+   changes in our internal system.
+
+3) It provides flexibility to the enduser to use the system.
+
+4) It improves maintainability of an application.

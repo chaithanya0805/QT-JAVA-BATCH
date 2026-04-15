@@ -1,0 +1,109 @@
+Recursion 
+=========
+Recursion is a programming technique which breaks down a complex problem into sub-problems.
+
+A method which call itself for many number of times is called recursion.
+
+Recursion is similar to loopings. Whenever we use recursion we should not use loops.
+
+
+Q) Write a java program to display 10 natural numbers without using loops?
+
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		//caller 
+		display(1);
+	}
+	//callie method 
+	public static void display(int i)
+	{
+		if(i<=10)
+		{
+			System.out.print(i+" ");
+			display(i+1);
+		}
+	}
+}
+
+Q) Write a java program to display sum of two numbers without using arithmetic operator?
+
+import java.util.*;
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the two numbers :");
+		int a = sc.nextInt();//5
+		int b = sc.nextInt();//10
+		
+		System.out.println(sum(a,b));	
+	}
+	//callie method 
+	public static int sum(int a,int b)
+	{
+		if(a==0)
+			return b;
+		
+		return sum(--a,++b);
+	}
+}
+
+Q) Write a java program to find out factorial of a given number using recursion?
+
+import java.util.*;
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the number :");
+		int n = sc.nextInt();//5
+		
+		System.out.println(factorial(n));
+	}
+	//callie method 
+	public static int factorial(int n)
+	{
+		if(n<0)
+			return -1;
+		if(n==0)
+			return 1;
+		
+		return n*factorial(n-1);
+	}
+}
+
+Q) Write a java program to find out N-th element of fibonacci series?
+
+fibonacci sequence : 0 1 1 2 3 5 8
+
+input:
+	4
+output:
+	2
+
+import java.util.*;
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the number :");
+		int n = sc.nextInt();//4
+		
+		System.out.println(fib(n));
+	}
+	//callie method 
+	public static int fib(int n)
+	{
+		if(n==0 || n==1)
+			return 0;
+		if(n==2)
+			return 1;
+		
+		return fib(n-1)+fib(n-2);
+	}
+}

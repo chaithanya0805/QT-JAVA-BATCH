@@ -1,0 +1,371 @@
+Has-A relationship 
+==================
+Has-A relationship is also known as composition and aggregation.
+
+There is no specific keyword to implements Has-A relationship but mostly we will use new operator.
+
+The main objective of Has-A relationship is to provide security.
+
+Has-A relationship increase dependency between two components.
+
+ex:
+---
+class Ihub 
+{
+	public String courseName()
+	{
+		return "Full Stack Java";
+	}
+	public double courseFee()
+	{
+		return 30000d;
+	}
+	public String trainerName()
+	{
+		return "Niyaz sir";
+	}
+}
+class Mumtaz
+{
+	public void getCourseDetails()
+	{
+		Ihub i = new Ihub();
+		System.out.println("Course Name : "+i.courseName());
+		System.out.println("Course Fee : "+i.courseFee());
+		System.out.println("Trainer Name : "+i.trainerName());
+	}
+}
+class Student
+{
+	public static void main(String[] args)
+	{
+		Mumtaz m =new Mumtaz();
+		m.getCourseDetails();
+	}
+}
+
+Composition 
+===========
+Without existing container object there is no chance of having contained object then the relationship between container and contained object is called composition which is strongly association.
+
+Diagram: class30.1
+
+class Engine 
+{
+	public void engineStart()
+	{
+		System.out.println("Engine Started");
+	}
+}
+class Car 
+{
+	Engine e;
+	Car()
+	{
+		e = new Engine();
+	}
+	public void carStart()
+	{
+		e.engineStart();
+		System.out.println("Car Moving");
+	}
+}
+class Test 
+{
+	public static void main(String[] args)
+	{
+		Car c = new Car();
+		c.carStart();
+	}
+}
+
+Aggregation 
+===========
+Without existing container object there is a chance of having contained object then the relationship between container and contained object is called aggregation which is loosely association.
+
+Diagram: class30.2
+
+
+class Engine 
+{
+	public void engineStart()
+	{
+		System.out.println("Engine Started");
+	}
+}
+class Car 
+{
+	Engine e;
+	Car(Engine e)
+	{
+		this.e = e;
+	}
+	public void carStart()
+	{
+		e.engineStart();
+		System.out.println("Car Moving");
+	}
+}
+class Test 
+{
+	public static void main(String[] args)
+	{
+		Engine e = new Engine();
+		Car c = new Car(e);
+		c.carStart();
+	}
+}
+
+
+this keyword 
+============
+A this keyword is a java keyword which is used to refer current class object reference.
+
+We can utilize this keyword in following ways.
+
+1) To refer current class variables 
+
+2) To refer current class methods 
+
+3) To refer current class constructors 
+
+
+1) To refer current class variables 
+-----------------------------------
+class A 
+{
+	//current class variables
+	int i=10;
+	int j=20;
+	
+	A(int i,int j)
+	{
+		System.out.println(i+" "+j); // 100  200
+		System.out.println(this.i+" "+this.j);//10  20
+	}
+}
+class Test 
+{
+	public static void main(String[] args)
+	{
+		A a = new A(100,200);
+	}
+}
+
+2) To refer current class methods 
+---------------------------------
+class A 
+{
+	public void m1()
+	{
+		System.out.println("M1-Method");
+	}
+	public void m2()
+	{
+		this.m1();
+		System.out.println("M2-Method");
+	}
+}
+class Test 
+{
+	public static void main(String[] args)
+	{
+		A a = new A();
+		a.m2();
+	}
+}
+
+3) To refer current class constructors
+--------------------------------------
+class A 
+{
+	A()
+	{
+		System.out.println("0-arg const");
+	}
+	A(int i)
+	{
+		this();
+		System.out.println("int-arg const");
+	}
+	A(double d)
+	{
+		this(10);
+		System.out.println("double-arg const");
+	}
+}
+class Test 
+{
+	public static void main(String[] args)
+	{
+		A a = new A(10.5d);
+	}
+}
+
+super keyword 
+=============
+A super keyword is a java keyword which is used to refer super class object reference.
+
+We can utilize super keyword in following ways.
+
+1) To refer super class variables 
+
+2) To refer super class methods 
+
+3) To refer super class constructors
+
+1) To refer super class variables 
+---------------------------------
+class A 
+{
+	int i=10;
+	int j=20;
+}
+class B extends A 
+{
+	int i=100;
+	int j=200;
+	B(int i,int j)
+	{
+		System.out.println(i+" "+j); // 1000 2000
+		System.out.println(this.i+" "+this.j);//100 200
+		System.out.println(super.i+" "+super.j);//10 20
+	}
+}
+class Test 
+{
+	public static void main(String[] args)
+	{
+		B b = new B(1000,2000);
+	}
+}
+
+2) To refer super class methods
+-------------------------------
+class A 
+{
+	public void m1()
+	{
+		System.out.println("M1-Method");
+	}
+}
+class B extends A 
+{
+	public void m2()
+	{
+		super.m1();
+		System.out.println("M2-Method");
+	}
+}
+class Test 
+{
+	public static void main(String[] args)
+	{
+		B b = new B();
+		b.m2();
+	}
+}
+
+3) To refer super class constructors
+------------------------------------
+class A 
+{
+	A()
+	{
+		System.out.println("A-const");
+	}
+}
+class B extends A 
+{
+	B()
+	{
+		//super();
+		System.out.println("B-const");
+	}
+}
+class Test 
+{
+	public static void main(String[] args)
+	{
+		B b = new B();
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

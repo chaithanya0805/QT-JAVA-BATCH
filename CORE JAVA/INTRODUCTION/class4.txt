@@ -1,0 +1,133 @@
+Java
+=====
+Version			:	JDK 25
+
+Vendor			:	Oracle Corporation 
+
+Creator			:	James Gosling 
+
+Website			:	www.oracle.com/java
+
+Open source		:	Open source 
+
+Tutorials		:	www.geeksforgeeks.org
+				www.tutorialspoint.com
+				www.w3schools.com
+				www.dzone.com 
+				and etc.
+Download link		:	
+
+https://www.oracle.com/java/technologies/downloads/#jdk25-windows	
+
+
+Steps to setup environmental variables 
+======================================
+step1:
+------
+	Make sure JDK 25 installed succcessfully.
+
+step2:
+------	
+	Copy "bin" directory from "java_home" folder.
+	ex:
+		C:\Program Files\Java\jdk-25\bin
+
+step3:
+------
+	Paste "bin" directory inside environmental variables.
+	ex:
+		right click to This PC --> properties --> advanced system settings 
+		---> Environmental variables --> System variables --> click to new button
+		---> variable name :  path 
+		     variable value : C:\Program Files\Java\jdk-25\bin; 
+		---> ok --> ok --> ok.
+
+step4:
+-----	
+	Execute below commands to check environmental setup done perfectly or not.
+	ex:
+		cmd> javap 
+		cmd> java -version 
+	
+Steps to develop first java application 
+========================================
+step1:
+------
+	Create a "javaprog" folder in 'D' drive.
+
+step2:
+------
+	Open the notepad and type Hello World program.
+	ex:
+		class Demo
+		{
+			public static void main(String[] args)
+			{		
+				System.out.println("Hello World");
+			}
+		}
+step3:
+-------
+	Save above program with same name as class name inside "javaprog" folder.
+
+step4:
+------
+	Open the command prompt from "javaprog" location.	
+
+step5:
+-----
+	Compile above program by using below command.
+	ex:
+		javac    Demo.java			
+				|
+				filename 
+
+step6:
+-----
+	Execute above program by using below command.
+	ex:
+		java    Demo 
+			|
+			class name 
+
+Note:
+------
+	In java, we can compile and execute our program at a time.
+	ex:
+		java    Demo.java 
+
+
+Interview Question 
+==================
+Q) What is package? 
+
+	A package is a collection of classes and interfaces.
+
+
+Q) Which package consider as default package in java?
+
+	java.lang package 
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

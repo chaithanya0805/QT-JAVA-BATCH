@@ -1,0 +1,448 @@
+Types of objects 
+================
+We have two types of objects in Java.
+
+1) Immutable object 
+
+2) Mutable object
+
+1) Immutable object
+-------------------
+After object creation if we perform any changes then for every change a new object will be created such type of object is called immutable object.
+ex:
+	String and Wrapper classes 
+
+2) Mutable object
+-----------------
+After object creation if we perform any changes then all the required changes will be done in a same object such type of object is called mutable object.
+ex:
+	StringBuffer and StringBuilder 
+
+
+String 
+======
+It is a collection of characters which is enclosed in a double quotation.
+ex:
+	"abcd"
+
+case1:
+-----
+Once if we create a String object we can't perform any changes. If we perform any changes then for every change a new object will be created such behaviour is called immutability of an object.
+
+Diagram: class34.1
+
+
+case2:
+-----
+What is the difference between == and .equals() method?
+
+==
+----
+It is used for reference comparision or address comparision.
+It is used to compare primitive types and object types.
+ex:
+---
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		String s1 = new String("ihub");
+		String s2 = new String("ihub");
+		System.out.println(s1 == s2); // false 
+	}
+}
+.equals()
+---------
+It is used for content comparision and it is a case sensitive.
+It is used to compare only object types.
+ex:
+---
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		String s1 = new String("ihub");
+		String s2 = new String("ihub");
+		System.out.println(s1.equals(s2)); //true 
+	}
+}
+
+case3:
+------
+If we create a String object , two objects will be created. One is on heap and another is on SCP (String Constant Pool) area.But reference points to heap area.
+
+Diagram: class34.2
+
+
+Object creation in SCP area is always optional. First JVM will check is there any object is created with same content or not. If it is created then JVM simply refers to that object. If it is not created then JVM will create a new object. Hence there is no chance of having duplicate objects in SCP area.
+
+Even though SCP objects do not have any reference, Garbage collector can't access them.
+
+SCP objects will destroy automatically whenever JVM shutdowns or terminated.
+
+Diagram: class34.3
+
+String important Methods 
+========================
+
+Q) Write a java program to find out length of a string?
+
+input:
+	hello
+output:
+	5 
+
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		String str = "hello";
+		int len = str.length();
+		System.out.println(len);
+	}
+}
+
+Q) Write a java program to convert uppercase to lowercase string?
+
+input:
+	IHUBTALENT 
+output:
+	ihubtalent 
+
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		String str = "IHUBTALENT";
+		str = str.toLowerCase();
+		System.out.println(str);
+	}
+}
+
+Q) Write a java program to convert lowercase to uppercase string?
+
+input:
+	ihubtalent
+output:
+	IHUBTALENT 
+
+
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		String str = "ihubtalent";
+		str = str.toUpperCase();
+		System.out.println(str);
+	}
+}
+
+Q) Write a java program to find out both the strings are equal to not?
+
+input:
+	ihub
+	ihub
+output:
+	Both are equals 
+
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		String s1 = "ihub";
+		String s2 = "ihub";
+		if(s1.equals(s2))
+			System.out.println("Both are equals");
+		else
+			System.out.println("Both are not equals");
+	}
+}
+
+Q) Write a java program to find out both the strings are equal to not?
+
+input:
+	ihub
+	IHUB
+output:
+	Both are equals 
+
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		String s1 = "ihub";
+		String s2 = "IHUB";
+		if(s1.equalsIgnoreCase(s2))
+			System.out.println("Both are equals");
+		else
+			System.out.println("Both are not equals");
+	}
+}
+
+Q) Write a java program to concatinate two strings?
+
+input:
+	ihub 
+	talent 
+output:
+	ihubtalent 
+
+ex:
+--
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		String s1 = "ihub";
+		String s2 = "talent";
+		String result = s1.concat(s2);
+		System.out.println(result);
+	}
+}
+
+Q) Write a java program to trim the string?
+
+input:
+	str = " Ihub Talent ";
+output:
+	Ihub Talent
+
+ex:
+---
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		String str = " Ihub Talent ";
+		System.out.println(str.length()); //13
+		str = str.trim();
+		System.out.println(str);
+		System.out.println(str.length()); // 11
+	}
+}
+
+Q) Write a java program to display the string in a given format?
+
+input:
+	abababa
+output:
+	aba
+
+ex:
+---
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		String str = "abababa";
+		
+		str = str.replace("aba","a");
+		
+		System.out.println(str); 
+	}
+}
+
+Q) Write a java program to find out number of vowels persent in a string?
+
+input:
+	umbrella 
+output:
+	3
+
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		String str = "umbrella";
+		
+		int cnt = 0;
+		for(int i=0;i<str.length();i++)
+		{
+			char ch = str.charAt(i);
+			
+			if(ch=='a' || ch=='e' || ch=='i' || ch=='o' || ch=='u')
+			{
+				cnt++;
+			}
+		}
+		System.out.println(cnt);
+	}
+}
+
+Q) Write a java program to remove special characters from given string?
+
+input:
+	I_hu@b#Tal$ent%12
+output:
+	IhubTalent12
+
+
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		String str = "I_hu@b#Tal$ent%12";
+		
+		str = str.replaceAll("[^A-Za-z0-9]","");
+		
+		System.out.println(str);
+	}
+}
+
+Q) Write a java program to remove the spaces from given string?
+
+input:
+	I hub Tal ent 
+output:
+	IhubTalent 
+
+
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		String str = "I hub Tal ent";
+		
+		str = str.replaceAll("\\s","");
+		
+		System.out.println(str);
+	}
+}
+
+Q) Write a java program to concatinate two strings?
+
+input:
+	Ihub12
+	Talent28
+output:
+	IhubTalent40
+
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		String s1 = "Ihub12";
+		String s2 = "Talent28";
+		
+		String word1  = s1.replaceAll("[^A-Za-z]",""); //Ihub
+		int num1 = Integer.parseInt(s1.replaceAll("[^0-9]","")); //12
+		
+		String word2 = s2.replaceAll("[^A-Za-z]",""); // Talent
+		int num2 = Integer.parseInt(s2.replaceAll("[^0-9]","")); //28
+		
+		String word = word1 + word2;
+		int num = num1 + num2;
+		
+		System.out.println(word+num);
+	}
+}
+
+
+Q) Write a java program to find out number of digits , sum of digits and it is even or odd?
+
+input:
+	NEX123
+	
+output:
+	Number of digits : 3
+	Sum of digits    : 6 
+	It is even number	
+
+
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		String str="NEX123";
+		
+		String newStr = str.replaceAll("[^0-9]","");
+		
+		System.out.println("Number of digits :"+newStr.length());
+		
+		int sum=0;
+		for(int i=0;i<newStr.length();i++)
+		{
+			//converting character to number 
+			int n = Character.getNumericValue(newStr.charAt(i));
+			sum+=n;
+		}
+		System.out.println("Sum of digits :"+sum);
+		
+		if(sum%2==0)
+			System.out.println("It is even number");
+		else
+			System.out.println("It is odd number");
+	}
+}
+
+Q) Write a java program to perform right rotation of a given string?
+
+input:
+	str = ihubtalent	
+	cnt = 2 
+output:
+	ubtalentih 
+	
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		String str ="ihubtalent";	
+		int cnt = 2; 
+		
+		String word1 = str.substring(cnt);
+		String word2 = str.substring(0,cnt);
+		
+		System.out.println(word1+word2);
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

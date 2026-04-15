@@ -1,0 +1,307 @@
+
+
+constructors 
+==============
+A constructor is a special type of method which is used to initialized an object.
+
+Having same name as class name is called constructor.
+
+A constructor is called when instance of a class is created.
+
+A constructor does not allow any retuntype.
+
+A constructor will accept following modifiers.
+ex:
+	default 
+	public 
+	private 
+	protected 
+
+In java, constructors are divided into two types.
+
+1) Userdefined constructor 
+
+2) Default constructor 
+
+1) Userdefined constructor 
+---------------------------
+A constructor which is created by the user based on the application requirements are called user defined constructor.
+
+It is classified into two types.
+
+i) Zero-argument constructor 
+
+ii) Parameterized constructor 
+
+i) Zero-argument constructor 
+-----------------------------
+Suppose if we are not passing any argument to userdefined constructor then that constructor is called zero-argument constructor.
+
+ex:
+---
+class Test
+{
+	Test()
+	{
+		System.out.println("0-arg const");	
+	}
+	public static void main(String[] args)
+	{
+		System.out.println("main-method");	
+	}
+}
+o/p:
+	main-method
+
+ex:
+---
+class Test
+{
+	public Test()
+	{
+		System.out.println("0-arg const");	
+	}
+	public static void main(String[] args)
+	{
+		Test t = new Test();
+		System.out.println("main-method");
+	}
+}
+o/p:
+	0-arg method 
+	main-method
+ex:
+---
+class Test
+{
+	private Test()
+	{
+		System.out.println("0-arg const");	
+	}
+	public static void main(String[] args)
+	{
+		System.out.println("main-method");
+		Test t = new Test();
+	}
+}
+o/p:
+	main-method 
+	0-arg method
+ex:
+--
+class Test
+{
+	protected Test()
+	{
+		System.out.println("0-arg const");	
+	}
+	public static void main(String[] args)
+	{
+		Test t1 = new Test();
+		System.out.println("main-method");
+		Test t2 = new Test();
+	}
+}
+o/p:
+	0-arg method 
+	main-method 
+	0-arg method
+
+ii) Parameterized constructor 
+-----------------------------
+Suppose if we are passing atleast one argument to userdefined constructor then such constructor is called parameterized constructor.
+
+ex:
+----
+class Employee 
+{
+	//current class variable 
+	private int empId;
+	private String empName;
+	private double empSal;
+	
+	Employee(int empId,String empName,double empSal)
+	{
+		this.empId = empId;
+		this.empName = empName;
+		this.empSal = empSal;
+	}
+	public void getEmployeeDetails()
+	{
+		System.out.println("Employee Id : "+empId);
+		System.out.println("Employee Name : "+empName);
+		System.out.println("Employee Salary : "+empSal);
+	}
+}
+class Test
+{	
+	public static void main(String[] args)
+	{
+		Employee e = new Employee(101,"Alan Morries",10000d);
+		e.getEmployeeDetails();
+	}
+}
+
+
+2) Default constructor 
+----------------------
+It is a compiler generated constructor for every java program where we are not defining atleast zero argument constructor.
+
+To see default constructor we need to use below command.
+ex:
+	javap  -c  Test 
+
+Diagram: class29.2
+
+
+Constructor overloading 
+=======================
+Having same constructor name with different parameters in a single class is called constructor overloading.
+
+ex:
+---
+
+class A 
+{
+	A()
+	{
+		System.out.println("0-arg const");
+	}
+	A(int i)
+	{
+		System.out.println("int-arg const");
+	}
+	A(double d)
+	{
+		System.out.println("double-arg const");
+	}
+}
+class Test
+{	
+	public static void main(String[] args)
+	{
+		A a1 = new A();	
+		A a2 = new A(10);
+		A a3 = new A(10.5d);
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

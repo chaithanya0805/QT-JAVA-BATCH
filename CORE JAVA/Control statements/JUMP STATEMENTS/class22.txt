@@ -1,0 +1,517 @@
+3) Jump Statement
+=================
+It is used to jump from one section of code to another section.
+
+We have three jump statements.
+
+i) break stmt 
+
+ii) continue stmt 
+
+iii) return stmt 
+
+i) break stmt
+-------------
+It is used to break the execution of loops and switch case.
+For conditioanl statement we can use if condition.
+
+syntax:
+------
+	break;
+
+ex:1
+-----
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		System.out.println("stmt1");
+		break;
+		System.out.println("stmt2");
+	}
+}
+o/p:
+	C.T.E : break outside switch or loop
+
+ex:2
+-----
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		System.out.println("stmt1");
+		if(false)
+		{
+			break;
+		}
+		System.out.println("stmt2");
+	}
+}
+o/p:
+	C.T.E : break outside switch or loop
+
+
+ex:3
+----
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		for(int i=1;i<=10;i++)
+		{
+			if(i==5)
+			{
+				break;
+			}
+			System.out.print(i+" "); // 1 2 3 4 
+		}
+	}
+}
+
+ii) continue stmt 
+------------------
+It is used to continue the execution of loops.
+For conditional statements we can use if condition.
+syntax:
+-------
+	continue;
+
+ex:1
+-----
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		System.out.println("stmt1");
+		continue;
+		System.out.println("stmt2");
+	}
+}
+o/p:
+	C.T.E : continue outside of loop
+
+ex:2
+-----
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		System.out.println("stmt1");
+		if(true)
+		{
+			continue;
+		}
+		System.out.println("stmt2");
+	}
+}
+o/p:
+	C.T.E : continue outside of loop
+
+ex:3
+----
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		for(int i=1;i<=10;i++)
+		{
+			if(i==5)
+			{
+				continue;
+			}
+			
+			System.out.print(i+" "); // 1 2 3 4 6 7 8 9 10
+		}
+	}
+}
+
+iii) return stmt 
+-----------------
+It is used to exit from methods.
+It contains optional value.
+syntax:
+	return;
+
+ex:
+---
+import java.util.Scanner;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Enter the option :");
+		int option = sc.nextInt();
+		
+		if(option==100)
+			System.out.println("It is a police number");
+		else if(option==103)
+			System.out.println("It is a enquiry number");
+		else if(option==108)
+			System.out.println("It is a emergency number");
+		else 
+			return;
+	}
+}
+
+Various ways to declare a method in java
+==========================================
+There are four ways to declare a method in java.
+
+1) No returntype with No argument method 
+
+2) No returntype with Argument method 
+
+3) With returntype with No argument method 
+
+4) With returntype with Argument method 
+
+
+
+1) No returntype with No argument method 
+----------------------------------------
+If we don't have arguments then we need to ask input values inside callie method.
+
+
+Q) Write a java program to perform sum of two numbers using no returntype with no argument method?
+
+import java.util.Scanner;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		//caller method 
+		sum();
+	}
+	//callie method 
+	public static void sum()
+	{
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the two numbers :");
+		int a = sc.nextInt();//10
+		int b = sc.nextInt();//20
+		System.out.println("sum of two numbers is ="+(a+b));
+	}
+}
+
+Q) Write a java program to display square of a given number using no returntype with no argument method?
+
+import java.util.Scanner;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		//caller method
+		square();
+	}
+	//callie method 
+	public static void square()
+	{
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the number :");
+		int n = sc.nextInt();
+		System.out.println("Square of a given number is ="+ Math.pow(n,2));
+	}
+}
+
+2) No returntype with Argument method 
+------------------------------------
+If we have arguments then we need to ask input values inside main method.
+Number of arguments depend upon number of inputs.
+
+
+Q) Write a java program to perform sum of two numbers using no returntype with argument method?
+
+import java.util.Scanner;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the two numbers :");
+		int a = sc.nextInt();//10
+		int b = sc.nextInt();//20
+		
+		//caller method 
+		sum(a,b);
+		
+	}
+	//callie method 
+	public static void sum(int a,int b)
+	{
+		int c = a + b;
+		System.out.println("Sum of two numbers is ="+c);
+	}
+}
+
+
+Q) Write a java program to find out factorial of a given number using no returntype with argument method?
+
+
+import java.util.Scanner;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the number :");
+		int n = sc.nextInt();//5
+		
+		//caller method 
+		factorial(n);
+		
+	}
+	//callie method 
+	public static void factorial(int n)
+	{
+		int fact=1;
+		for(int i=n;i>=1;i--)
+		{
+			fact*=i;
+		}
+		System.out.println("Factorial of a given number is ="+fact);
+	}
+}
+
+3) With returntype with No argument method 
+------------------------------------------
+Here returntype is completely depend upon output datatype.
+We can return only one value at a time.
+
+
+Q) Write a java program to perform sum of two numbers and return sum using with returntype with no argument method?
+
+import java.util.Scanner;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		//caller method 
+		int k = sum();
+		System.out.println("Sum of two numbers is ="+k);
+	}
+	//callie method 
+	public static int sum()
+	{
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the two numbers :");
+		int a = sc.nextInt();
+		int b = sc.nextInt();
+		int c = a + b;
+		return c;
+	}
+}
+
+Q) Write a java program to perform area of a circle using with returntype with no argument method?
+
+import java.util.Scanner;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		//caller method
+		double k = circle();
+		System.out.printf("Area of a circle is = %.2f",k);
+	}
+	//callie method 
+	public static double circle()
+	{
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the radius :");
+		int r = sc.nextInt();
+		
+		double area = Math.PI*Math.pow(r,2);
+		
+		return area;
+	}
+}
+
+
+4) With returntype with Argument method 
+---------------------------------------
+We can declare multiple return statements but at a time we can return only one value.
+
+
+Q) Write a java program to perform sum of two numbers using with returntype with argument method?
+
+import java.util.Scanner;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the two numbers :");
+		int a = sc.nextInt();
+		int b = sc.nextInt();
+		
+		//caller method 
+		System.out.println("sum of two numbers is ="+sum(a,b));
+	}
+	//callie method 
+	public static int sum(int a,int b)
+	{
+		int c = a + b;
+		return c;
+	}
+}
+
+Q) Write a java program to perform given number is even or odd using with returntype with argument method?
+
+approach1
+---------
+import java.util.Scanner;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the number :");
+		int n = sc.nextInt();//5
+		
+		//caller method 
+		System.out.println(find(n));
+	}
+	//callie method 
+	public static String find(int n)
+	{
+		if(n%2==0)
+			return "It is even number";
+		else
+			return "It is odd number";
+	}
+}
+
+
+approach2
+---------
+import java.util.Scanner;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the number :");
+		int n = sc.nextInt();//5
+		
+		//caller method 
+		int k = find(n);
+		if(k==1)
+			System.out.println("It is even number");
+		else
+			System.out.println("It is odd number");
+	}
+	//callie method 
+	public static int find(int n)
+	{
+		if(n%2==0)
+			return 1;
+		else
+			return 0;
+	}
+}
+
+approach3
+---------
+import java.util.Scanner;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the number :");
+		int n = sc.nextInt();//5
+		
+		//caller method 
+		if(find(n))
+			System.out.println("It is even number");
+		else
+			System.out.println("It is odd number");
+	}
+	//callie method 
+	public static boolean find(int n)
+	{
+		if(n%2==0)
+			return true;
+		else
+			return false;
+	}
+}
+
+Assignment
+==========
+Q) Write a java program to find out given number is prime or not?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,64 @@
+
+OOPS 
+=====
+OOPS stands for Object Oriented Programming System/Structure.
+
+OOPS concept introduced to deal with realworld entities using programing language.
+
+A language which provides very good environment to represent our data in the form of objects is called object oriented programming language.
+
+A language is said be object oriented if it supports following features.
+ex:
+	class 
+	object 
+	Abstraction 
+	Encapsulation 
+	Inheritance &
+	Polymorphism 
+
+
+class 
+=====
+A class is a blue print of an object.
+ex:
+	template 
+	Design 
+
+It is a collection of objects.
+
+It is a logical entity.
+
+A class will accept following modifiers.
+ex:
+	default 
+	public 
+	final 
+	abstract 
+	Sealed    -- Java 17
+	non-selead -- Java 17
+
+Q) What is the difference between default class and public class?
+
+default class				public class
+---------------				---------------
+To declare default class we don't 	To declare public class we required
+required any keyword.			public keyword.
+ex:
+	class A 			public class A 
+	{				{
+	}				}
+
+If we declare any class as default 	If we declare any class as public then 
+then we can access that class within	we can access that class within the 
+the packages.				               package and outside the package.
+
+
+
+
+
+
+
+
+
+
+

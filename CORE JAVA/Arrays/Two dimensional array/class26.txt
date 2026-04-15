@@ -1,0 +1,255 @@
+Double Dimensional Array 
+========================
+Double dimensional array is a combination of rows and columns.
+
+Double dimensional array is implemented by using array of arrays approach but not matrix form.
+
+Double dimensional is used to develop business oriented applications, gaming applications, matrix type of applications and etc.
+
+The main objective of double dimensional array is memory utilization.
+
+We can declare and create double dimensional array as follow.
+ex:
+	int[][] arr = new int[3][3];
+			      |  |
+			    rows cols
+
+	Here we can store 9 elements.
+
+We can initialize double dimensional array as follow.
+ex:
+	int[][] arr = {{1,2,3},{4,5,6},{7,8,9}};	
+
+
+
+Q) Write a java program to accept some array elements and display them in matrix form?
+
+Approach1:
+----------
+import java.util.Scanner;
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Enter the rows :");
+		int rows = sc.nextInt();//3
+		
+		System.out.println("Enter the columns :");
+		int cols = sc.nextInt();//3
+		
+		int[][] arr = new int[rows][cols];
+		
+		//insert elements 
+		for(int i=0;i<rows;i++)
+		{
+			for(int j=0;j<cols;j++)
+			{
+				System.out.println("Enter the element :");
+				arr[i][j] = sc.nextInt();
+			}
+		}
+		
+		//display elements 
+		for(int i=0;i<rows;i++)
+		{
+			for(int j=0;j<cols;j++)
+			{
+				System.out.print(arr[i][j]+" ");
+			}
+			//new line 
+			System.out.println();
+		}
+		
+	}
+}
+
+Approach2
+---------
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		int[][] darr = {{1,2,3},{4,5,6},{7,8,9}};	
+		
+		//for each loop 
+		for(int[] arr : darr)
+		{
+			for(int i : arr)
+			{
+				System.out.print(i+" ");
+			}
+			//new line 
+			System.out.println();
+		}
+	}
+}
+
+Q) Write a java program to display square of a matrix?
+
+input:
+	1 2 3 
+	4 5 6 
+	7 8 9 
+output:
+	1  4  9
+	16 25 36
+	49 64 81
+ 
+
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		int[][] darr = {{1,2,3},{4,5,6},{7,8,9}};	
+		
+		//for each loop 
+		for(int[] arr : darr)
+		{
+			for(int i : arr)
+			{
+				System.out.print(i*i +" ");
+			}
+			//new line 
+			System.out.println();
+		}
+	}
+}
+
+Q) Write a java program to find out sum of diagonal elements?
+
+input:
+	1 2 3
+	4 5 6
+	7 8 9 
+
+output:
+	15
+
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		int[][] arr = {{1,2,3},{4,5,6},{7,8,9}};
+		
+		int rows = arr.length;
+		int cols = arr[0].length;
+		
+		int sum=0;
+		for(int i=0;i<rows;i++)
+		{
+			for(int j=0;j<cols;j++)
+			{
+				if(i==j)
+				{
+					sum+=arr[i][j];	
+				}
+			}
+		}
+		System.out.println(sum);
+	}
+}
+
+
+Q) Write a java program to find out sum of upper triangle elements?
+
+input:
+	1 2 3
+	4 5 6
+	7 8 9 
+
+output:
+	11
+
+
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		int[][] arr = {{1,2,3},{4,5,6},{7,8,9}};
+		
+		int rows = arr.length;
+		int cols = arr[0].length;
+		
+		int sum=0;
+		for(int i=0;i<rows;i++)
+		{
+			for(int j=0;j<cols;j++)
+			{
+				if(i<j)
+				{
+					sum+=arr[i][j];	
+				}
+			}
+		}
+		System.out.println(sum);
+	}
+}
+
+
+Q) Write a java program to find out sum of lower triangle elements?
+
+input:
+	1 2 3
+	4 5 6
+	7 8 9 
+
+output:
+	19
+
+
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		int[][] arr = {{1,2,3},{4,5,6},{7,8,9}};
+		
+		int rows = arr.length;
+		int cols = arr[0].length;
+		
+		int sum=0;
+		for(int i=0;i<rows;i++)
+		{
+			for(int j=0;j<cols;j++)
+			{
+				if(i>j)
+				{
+					sum+=arr[i][j];	
+				}
+			}
+		}
+		System.out.println(sum);
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

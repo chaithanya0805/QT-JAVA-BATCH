@@ -1,0 +1,143 @@
+
+
+Encapsulation 
+=============
+The process of grouping or encapsulating variables and it's associate methods in a single entity is called encapsulation.
+
+The best example of encapsulation is capsule.
+
+A class is said to be encapsulated class if it supports data hiding and abstraction.
+
+Diagram: class28.2
+
+Abstraction is used to hide the data and encapsulation is used to protect the data.
+
+In encapsulation for every variable we need to write setter and getter methods.
+
+The main advantages of encapsulation are 
+
+1) It gives security. 
+
+2) Enhancement become more easy.
+
+3) It provides flexibility to the enduser to use the system.
+
+4) It improves maintaibility of an application.
+
+The main disadvantage of encapsulation is , it will increase length of our code and slow down the execution process.
+
+ex:
+---
+class Student 
+{
+	//current class variables 
+	private int studId;
+	private String studName;
+	private double studFee;
+	
+	//setter methods
+	public void setStudId(int studId)
+	{
+		this.studId=studId;
+	}
+	public void setStudName(String studName)
+	{
+		this.studName=studName;
+	}
+	public void setStudFee(double studFee)
+	{
+		this.studFee=studFee;
+	}
+	
+	//getter methods 
+	public int getStudId()
+	{
+		return studId;
+	}
+	public String getStudName()
+	{
+		return studName;
+	}
+	public double getStudFee()
+	{
+		return studFee;
+	}
+}
+class Test 
+{
+	public static void main(String[] args)
+	{
+		Student s = new Student();
+		s.setStudId(101);
+		s.setStudName("Alan");
+		s.setStudFee(1000d);
+		
+		System.out.println("Student Id : "+s.getStudId());
+		System.out.println("Student Name : "+s.getStudName());
+		System.out.println("Student Fee : "+s.getStudFee());
+	}
+}
+
+
+Q) What is the difference between Abstraction and Encapsulation?
+
+Abstraction				Encapsulation
+----------				--------------
+Hiding internal implementation and 	The process of encapsulating or grouping
+highlighting the set of services is 	variables and it's associate methods in 
+called abstraction.			a single entity is called encapsulation.
+ex:					ex:
+	ATM Machine				Capsule 
+
+It is used to hide the data.		It is used to protect the data.
+
+Using abstract classes and interfaces	Using access modifiers we can achieve 
+we can achieve abstraction.		encapsulation.
+
+It is a process of gaining the 		It is a process of containing the 
+information.				information.
+
+It solves the issue at design level.	It solves the issue at implementation
+					              level.
+
+
+
+
+Q) What is the difference between POJO and Java Bean class?
+
+POJO					Java Bean 
+-----------				----------------
+It can't be serialized.			It can be serialized.
+
+Fields can have any visibility.		Fields can have only private visibility.
+
+It may or may not have constructor.	It must have atleast zero argument constructor.
+
+It does not extends outside classes.	It can extends.
+
+It does not implements outside		It can implements. 
+interfaces.
+
+It does not use outside annotations.	It uses.
+
+
+
+
+Q) What is tightly encapsulated class?
+
+A class is said to be tightly encapsulated if and if all the variables of that class declared as private. Here we don't need to check these variables contain setter and getter method or not.
+
+ex:
+	class A 
+	{
+		int i=10;
+	}
+	// It is not a tightly encapsulated class 
+
+ex:
+	class B 
+	{
+		private int j=20;
+		private int i=10;
+	}
+	// It is a tightly encapsulated class	

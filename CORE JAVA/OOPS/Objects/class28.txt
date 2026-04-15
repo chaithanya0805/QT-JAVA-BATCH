@@ -1,0 +1,164 @@
+
+object 
+=======
+It is a outcome of a blue print.
+
+It is a instance of a class. Here instance means allocating memory for our data members.
+
+It is a collection of properties and behaviours.
+
+ex:
+			Dog 
+			|
+	|----------------------------------|
+ Properties				Behaviours
+
+> Name 					> Eating 
+> Age					> Barking 	
+> Color 				        > Sleeping
+> Breed 				        > Running 
+> Height 				       and etc.
+and etc.
+
+It is a physical entity.
+
+We can create object as follow.
+
+syntax:
+-------
+	class_name  reference_variable = new  constructor();
+
+ex:
+	Test t = new Test();
+
+It is possible to create multiple objects in a single class.
+
+ex:
+---
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		Test t1 = new Test();
+		Test t2 = new Test();
+		Test t3 = new Test();
+		
+		System.out.println(t1.hashCode());
+		System.out.println(t2.hashCode());
+		System.out.println(t3.hashCode());
+		
+		System.out.println(t1); //Test@Hexadecimal 
+		System.out.println(t2.toString());
+		System.out.println(t3.toString());
+	}
+}
+
+Q) What is hashcode in java?
+
+For every object JVM will create a unique identification number i.e hash code.
+
+To read hash code of an object we need to use hashCode() method.
+
+A hashCode() method present in java.lang.Object class.
+
+Diagram: class28.1
+
+
+
+
+Q) What is toString() method in java?
+
+A toString() method present in java.lang.Object class.
+
+Whenever we are trying to display any object reference directly or indirectly toString() method will be executed.
+
+ex:
+----
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		int[] arr = new int[3];
+		System.out.println(arr); // [I@7ad041f3
+		System.out.println(arr.toString());//[I@7ad041f3
+	}
+}
+
+ex:
+---
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		Test t = new Test();
+		System.out.println(t); // Test@7ad041f3
+		System.out.println(t.toString()); // Test@7ad041f3
+	}
+}
+
+ex:
+---
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		Test t = new Test();
+		System.out.println(t); // Test@7ad041f3
+	}
+	@Override
+	public String toString()
+	{
+		return "Hello World";
+	}
+}
+
+Q) What is the difference between class and object?
+
+class					object
+------					-------
+To declare a class we will use class 	To declare object we will use 
+keyword.				new keyword.
+
+It is a blue print of an object.	It is a instance of a class.
+
+It is a collection of objects.		It is a collection of properties 
+					and behaviours.
+
+It is a logical entity.			It is a physical entity.
+
+It can't be modified.			It can be modified.
+
+It can't be redeclared.			It can be redeclared.
+
+Data Hiding 
+===========
+The process of hiding object data from unauthorized access is called data hiding.
+
+Using private modifier we can achieve data hiding concept.
+
+The main objective of data hiding is to provide security.
+
+ex:
+---
+class Account 
+{
+	//current class variable 
+	private double balance = 10000d;
+}
+class Student
+{
+	public static void main(String[] args)
+	{
+		Account account = new Account();
+		System.out.println(account.balance);
+	}
+}
+o/p:
+	C.T.E : balance has private access in Account
+
+Note:
+-----
+	We can't access private data directly. But we can access private data 
+	indirectly by using setter and getter methods.
+
+

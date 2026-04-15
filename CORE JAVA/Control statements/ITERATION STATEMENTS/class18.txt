@@ -1,0 +1,89 @@
+
+
+2) Iteration Statement 
+======================
+Iteration statement is used to execute the code repeatedly.
+
+Iteration statement is possible by using LOOPS.
+
+We have four types of LOOPS.
+
+i) do while loop 
+
+ii) while loop 
+
+iii) for loop 
+
+iv) for each loop 
+
+i) do while loop
+----------------
+It is used to execute the source code how long our condition is true.
+
+syntax:
+------
+	do
+	{
+		-
+		- //code to be execute 
+		-
+	}while(condition);
+
+ex:
+---
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		int i=1;
+		do
+		{
+			System.out.print(i+" "); // infinite 1 
+		}
+		while(i<=10);
+	}
+}
+
+In do while loop, our code will execute atleast for one time either our condition is true or false.
+
+ex:
+---
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		int i=11;
+		do
+		{
+			System.out.print(i+" "); // 11
+		}
+		while(i<=10);
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

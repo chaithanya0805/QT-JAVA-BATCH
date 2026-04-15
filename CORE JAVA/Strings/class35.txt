@@ -1,0 +1,441 @@
+Q) Write a java program to display extension of a file?
+
+input:
+	abc.txt 
+output:
+	txt 
+
+
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		String str = "abc.txt";
+		
+		int index = str.indexOf('.');
+		
+		String result = str.substring(index+1);
+		
+		System.out.println(result);
+	}
+}
+
+Q) Write java program to check given maid id is valid or not?
+
+input:
+	raja@gmail.com
+output:
+	valid 
+
+
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		String str = "raja@gmail.com";
+		
+		int atPosition = str.indexOf('@');
+		
+		int dotPosition = str.lastIndexOf('.');
+		
+		if(atPosition!=-1 && dotPosition !=-1 && atPosition<dotPosition)
+			System.out.println("Valid");
+		else
+			System.out.println("Invalid");
+	}
+}
+
+Q) Write a java program to remove the word from given string?
+
+input:
+	str = This is java class
+	remove = is
+output:
+	Th java class
+
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		String str = "This is java class";
+		String remove = "is";
+		str = str.replace(remove,"");
+		System.out.println(str); 
+	}
+}
+
+Q) Write a java program to check string contains only alphabets or not?
+
+input:
+	hello 
+output:
+	TRUE
+
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		String str = "hello1";
+		if(str.matches("[A-Za-z]+"))
+			System.out.println("TRUE");
+		else
+			System.out.println("FALSE");
+	}
+}
+
+
+Q) Write a java program on join() method in String?
+
+ex:
+---
+
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		
+		String result = String.join(",","apple","banana","cat");
+		
+		System.out.println(result); 
+	}
+}
+
+ex:
+--
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		String[] languages = {"java","python", "Dotnet"};
+		String result = String.join(" | ",languages);
+		System.out.println(result); 
+	}
+}
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		String str="apple ball cat";
+		String result = String.join(" , ",str.split(" "));
+		System.out.println(result); 
+	}
+}
+
+
+Q) Write a java program to find out maximum integer value from given string?
+
+input:
+	1kg of mango is 100 rupees and 2kg of apple is 200 rupees
+output:
+	200
+
+
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		String str="1kg of mango is 100 rupees and 2kg of apple is 200 rupees";
+		String[] sarr = str.split("\\D+");
+		
+		int max = Integer.MIN_VALUE; //-2147483648 
+		
+		for(String s : sarr)
+		{
+			int n = Integer.parseInt(s);
+			
+			if(n>max)
+			{
+				max = n;
+			}
+		}
+		System.out.println(max);
+	}
+}
+
+Q) Write a java program to display reverse of a string?
+
+input:
+	hello 
+
+output:
+	olleh 
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		String str="hello";
+		
+		String rev = "";
+		
+		//reading reverse 
+		for(int i=str.length()-1;i>=0;i--)
+		{
+			rev += str.charAt(i);
+		}
+		
+		System.out.println(rev);
+	}
+}
+
+
+Q) Write a java program to find out given string is palindrome or not?
+
+input:
+	racar 
+output:
+	It is a palindrome string 
+
+
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		String str="racar";
+		
+		String rev = "";
+		
+		//reading reverse 
+		for(int i=str.length()-1;i>=0;i--)
+		{
+			rev += str.charAt(i);
+		}
+		
+		if(str.equals(rev))
+			System.out.println("It is a palindrome string");
+		else
+			System.out.println("It is not a palindrome string");
+	}
+}
+
+Q) Write a java program to display reverse of a sentence?
+
+input:
+	This is java class 
+
+output:
+	class java is This 
+
+
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		String str="This is java class";
+		
+		String[] sarr = str.split(" ");
+		
+		//reading reverse 
+		for(int i=sarr.length-1;i>=0;i--)
+		{
+			System.out.print(sarr[i]+" ");
+		}
+	}
+}
+
+Q) Write a java program to display reverse of a word in a sentence?
+
+input:
+	This is java class 
+
+output:
+	sihT si avaj ssalc 
+
+
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		String str="This is java class";
+		
+		String[] sarr = str.split(" ");
+		
+		for(String s : sarr) //This 
+		{
+			//reading reverse 
+			for(int i=s.length()-1;i>=0;i--)
+			{
+				System.out.print(s.charAt(i));
+			}
+			//adding space
+			System.out.print(" ");
+		}
+	}
+}
+
+
+Q) Write a java program to sort the string?
+
+input:
+	dacbe 
+output:
+	abcde 
+
+
+import java.util.Arrays;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		String str="dacbe";
+		
+		char[] carr = str.toCharArray();
+		
+		Arrays.sort(carr);
+		
+		str = new String(carr);
+		
+		System.out.println(str); 
+	}
+}
+
+
+Q) Write a java program to find out the string starting with uppercase letter?
+
+input:
+	This is Java class For students 
+
+output:
+	This Java For 
+
+
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		String str="This is Java class For students";
+		String[] sarr = str.split(" ");	
+		
+		for(String s : sarr) // This 
+		{
+			if(Character.isUpperCase(s.charAt(0)))
+			{
+				System.out.print(s+" ");
+			}
+		}
+	}
+}
+
+
+Q) Write a java program to display palindrome string?
+
+input:
+	madam is racar for students 
+
+output:
+	madam  racar 
+
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		String str="madam is racar for students";
+		
+		String[] sarr = str.split(" ");	
+		
+		for(String s : sarr) // madam 
+		{
+			//reading reverse 
+			String rev="";
+			for(int i=s.length()-1;i>=0;i--)
+			{
+				rev+=s.charAt(i);
+			}
+			if(s.equals(rev))
+				System.out.print(s+" ");
+		}
+	}
+}
+
+Q) Jack purchased a new laptop for his office work. His son started learning how to frame the words using alphabets. Jack wants to write a program to find out longest word created by his son.
+
+input:
+	apple cat banana elephant dark 
+output:
+	elephant 
+
+
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		String str="apple cat banana elephant dark";
+		
+		String[] sarr = str.split(" ");	
+		
+		int size = sarr[0].length();
+		String word = "";
+		
+		for(String s : sarr)
+		{
+			if(s.length() > size)
+			{
+				size = s.length();
+				word = s;
+			}
+		}
+		System.out.println(word);
+	}
+}
+
+Assignment 
+===========
+Q) Write a java program to find convert uppercase to lowercase and vice versa?
+
+input:
+	IhUbTAlenT
+output:
+	iHuBtaLENt
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

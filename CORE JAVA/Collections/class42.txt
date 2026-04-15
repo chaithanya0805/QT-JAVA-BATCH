@@ -1,0 +1,623 @@
+Q) What is the difference between List.of() and Arrays.asList() method?
+
+List.of() 
+==========
+It is introduced in Java 9.
+It creates immutable object.
+We can't add, remove or replace elements.
+It does not allow null elements.
+
+ex:
+---
+import java.util.*;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		List<Integer> list = List.of(8,2,9,1,4,6);
+		for(int i=0;i<list.size();i++)
+		{
+			System.out.print(list.get(i)+" ");
+		}
+	}
+}
+
+ex:
+---
+import java.util.*;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		List<Integer> list = List.of(8,2,9,1,4,6);
+		for(int i : list)
+		{
+			System.out.print(i+" ");
+		}
+	}
+}
+
+ex:
+---
+import java.util.*;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		List<Integer> list = List.of(8,2,9,1,4,6);
+		list.add(100); // R.E UnsupportedOperationException
+		
+		for(int i : list)
+		{
+			System.out.print(i+" ");
+		}
+	}
+}
+
+ex:
+---
+import java.util.*;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		List<Integer> list = List.of(8,2,9,1,4,6);
+		list.remove(8); // R.E UnsupportedOperationException
+		
+		for(int i : list)
+		{
+			System.out.print(i+" ");
+		}
+	}
+}
+
+ex:
+---
+import java.util.*;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		List<Integer> list = List.of(8,2,9,1,4,6);
+		list.set(2,100); // R.E UnsupportedOperationException
+		
+		for(int i : list)
+		{
+			System.out.print(i+" ");
+		}
+	}
+}
+
+ex:
+---
+import java.util.*;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		List<Integer> list = List.of(8,2,9,1,4,6,null); 
+		
+		for(int i : list)
+		{
+			System.out.print(i+" ");
+		}
+	}
+}
+o/p:
+	R.E NullPointerException 
+
+
+
+
+Arrays.asList() 
+===============
+It is introduced in Java 1.2.
+It create mutable object.
+We can't add or remove but we can replace elements.
+It allows null elements.
+
+ex:
+---
+import java.util.*;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		List<Integer> list = Arrays.asList(6,9,1,4,2,7);
+		
+		for(int i : list)
+		{
+			System.out.print(i+" ");
+		}
+	}
+}
+
+ex:
+---
+import java.util.*;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		List<Integer> list = Arrays.asList(6,9,1,4,2,7);
+		list.add(100); // R.E UnsupportedOperationException
+		
+		for(int i : list)
+		{
+			System.out.print(i+" ");
+		}
+	}
+}
+
+ex:
+----
+import java.util.*;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		List<Integer> list = Arrays.asList(6,9,1,4,2,7);
+		list.remove(6); // R.E UnsupportedOperationException
+		
+		for(int i : list)
+		{
+			System.out.print(i+" ");
+		}
+	}
+}
+
+ex:
+---
+import java.util.*;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		List<Integer> list = Arrays.asList(6,9,1,4,2,7);
+		list.set(2,100); // R.E UnsupportedOperationException
+		
+		for(int i : list)
+		{
+			System.out.print(i+" ");
+		}
+	}
+}
+
+ex:
+---
+import java.util.*;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		List<Integer> list = Arrays.asList(6,9,1,4,2,7,null);
+		
+		for(int i=0;i<list.size();i++)
+		{
+			System.out.println(list.get(i)+" ");
+		}
+		
+	}
+}
+
+
+Q) Write a java program to sort the list?
+
+input:
+	dog apple cat ball elephant 
+
+output:
+	apple ball cat dog elephant 
+
+
+import java.util.*;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		String str="dog apple cat ball elephant";
+		List<String> list = Arrays.asList(str.split(" "));
+		Collections.sort(list);
+		for(String s : list)
+		{
+			System.out.print(s+" ");
+		}
+		
+	}
+}
+
+Q) Write a java program to display reverse of a list?
+
+input:
+	this is java class 
+
+output:
+	class java is this 
+
+import java.util.*;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		String str="this is java class";
+		List<String> list = Arrays.asList(str.split(" "));
+		Collections.reverse(list);
+		for(String s : list)
+		{
+			System.out.print(s+" ");
+		}
+		
+	}
+}
+
+Q) How to make our List as synchronized?
+
+
+
+
+import java.util.*;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		//multiple threads are allowed to execute 
+		//it is not thread safe
+		List<Integer> list = List.of(7,1,9,2,5,3);
+		
+		//only one thread is allowed to execute
+		//it is thread safe
+		List<Integer> synList = Collections.synchronizedList(list);
+		
+		System.out.println(synList);
+		
+	}
+}
+
+Q) Write a java program to compare two list?
+
+input:
+	[this,is,java,class] 
+	[this,is,java,class] 
+output:
+	Both are same 
+
+
+import java.util.*;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		List<String> list1 = List.of("this","is","java","class");
+		List<String> list2 = List.of("this","is","java","class");
+		if(list1.equals(list2))
+			System.out.println("Both are same");
+		else
+			System.out.println("Both are not same");
+	}
+}
+
+Q) Is it valid declaration in java?
+
+Yes, it is valid declaration in java.
+
+import java.util.*;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		List<Integer> list = new ArrayList<>();
+		list.add(10);
+		list.add(20);
+		list.add(30);
+		System.out.println(list); //[10,20,30]
+	}
+}
+
+
+Q) Write a java program to display intersect elements?
+
+input:
+	[html,java,css,oracle,javascript,springboot]
+	[python,html,mysql,css,django,javascript] 
+
+output:
+	[html,css,javascript]
+
+import java.util.*;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		List<String> list1 = new ArrayList<>();
+		list1.add("html");
+		list1.add("java");
+		list1.add("css");
+		list1.add("oracle");
+		list1.add("javascript");
+		list1.add("springboot");
+		System.out.println(list1);//[html,java,css,oracle,javascript,springboot]
+		
+		List<String> list2 = new ArrayList<>();
+		list2.add("python");
+		list2.add("html");
+		list2.add("mysql");
+		list2.add("css");
+		list2.add("django");
+		list2.add("javascript");
+		System.out.println(list2);//[python,html,mysql,css,django,javascript]
+		
+		list1.retainAll(list2);
+		System.out.println(list1);
+		
+	}
+}
+
+
+
+
+
+
+
+LinkedList 
+==========
+The underlying data structure is doubly LinkedList.
+
+Duplicate objects are allowed.
+
+Insertion order is preserved. 
+
+Hetrogeneous objects are allowed.
+
+Null insertion is possible.
+
+It implements List, Serializable, Cloneable and Deque interface.
+
+LinkedList contains following methods.
+ex:
+	public E getFirst();
+  	public E getLast();
+  	public E removeFirst();
+  	public E removeLast();
+  	public void addFirst(E);
+  	public void addLast(E);
+
+
+ex:
+---
+import java.util.*;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		LinkedList ll =new LinkedList();
+		ll.add("one");
+		ll.add("two");
+		ll.add("three");
+		System.out.println(ll);//[one,two,three]
+		
+		ll.add("one");
+		System.out.println(ll);//[one,two,three,one]
+		
+		ll.add(10);
+		System.out.println(ll); //[one,two,three,one,10]
+		
+		ll.add(null);
+		System.out.println(ll); //[one,two,three,one,10,null]
+	}
+}
+
+ex:
+---
+import java.util.*;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		LinkedList<String> ll =new LinkedList<>();
+		ll.add("one");
+		ll.add("two");
+		ll.add("three");
+		System.out.println(ll);//[one,two,three]
+		
+		ll.add("one");
+		System.out.println(ll);//[one,two,three,one]
+		
+		ll.add(null);
+		System.out.println(ll); //[one,two,three,one,null]
+	}
+}
+
+
+ex:
+---
+
+import java.util.*;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		LinkedList<String> ll =new LinkedList<>();
+		ll.add("one");
+		ll.add("two");
+		ll.add("three");
+		System.out.println(ll); //[one,two,three]
+		
+		ll.addFirst("gogo");
+		ll.addLast("jojo");
+		System.out.println(ll); //[gogo,one,two,three,jojo]
+		
+		System.out.println(ll.getFirst()); // gogo
+		System.out.println(ll.getLast()); // jojo
+		
+		ll.removeFirst();
+		ll.removeLast();
+		System.out.println(ll); //[one,two,three]
+		
+	}
+}
+
+ex:
+---
+import java.util.*;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		LinkedList<String> ll1 =new LinkedList<>();
+		ll1.add("one");
+		ll1.add("two");
+		ll1.add("three");
+		System.out.println(ll1); //[one,two,three]
+		
+		LinkedList<String> ll2 =new LinkedList<>();
+		ll2.add("raja");
+		System.out.println(ll2); //[raja]
+		
+		ll2.addAll(ll1);
+		System.out.println(ll2); //[raja,one,two,three]
+		
+		System.out.println(ll2.containsAll(ll1));//true 
+		
+		ll2.removeAll(ll1);
+		System.out.println(ll2); //[raja]
+	}
+}
+
+
+Q) What is the difference between ArrayList and LinkedList?
+
+ArrayList				LinkedList 
+------------				----------
+The underlying data structure is 	The underlying data structure is 
+resizable array or growable array.	doubly LinkedList.
+
+It is best for storing and retrieving 	It is best for manipulating the 
+the elements.				elements.
+
+Memory location of ArrayList elements	Memory location of LinkedList elements
+are contigeous.				are not contigeous.
+
+When ArrayList is initialized a 	There is no case of default capacity.
+default capacity 10 is assigned to it.
+
+
+Vector 
+======
+The underlying data structure is resizable array or growable array.
+
+Duplicate objects are allowed.
+
+Insertion order is preserved.
+
+Hetrogeneous objects are allowed.
+
+Null insertion is possible.
+
+It implements List, Serializable, Cloneable and RandomAccess interface.
+
+In Vector, all methods are synchronized. Hence it is thread safe.
+
+Vector contains following methods.
+ex:
+	public synchronized void addElement(E);
+	public synchronized E firstElement();
+ 	public synchronized E lastElement();
+	public synchronized void setElementAt(E, int);
+	public synchronized void insertElementAt(E, int);
+	public synchronized void removeAllElements();
+	and etc.	
+
+ex:
+---
+import java.util.*;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		Vector<Integer> v = new Vector<>();
+		System.out.println(v.capacity()); // 10
+		
+		for(int i=1;i<=10;i++)
+		{
+			v.addElement(i);
+		}
+		System.out.println(v); // [1,2,3,4,5,6,7,8,9,10]
+		
+		System.out.println(v.firstElement());//1
+		System.out.println(v.lastElement());//10
+		
+		v.setElementAt(100,2);
+		System.out.println(v); //[1, 2, 100, 4, 5, 6, 7, 8, 9, 10]
+		
+		v.insertElementAt(3,2);
+		System.out.println(v); //[1, 2, 3, 100, 4, 5, 6, 7, 8, 9, 10]
+		
+		v.removeAllElements();
+		System.out.println(v);//[]
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

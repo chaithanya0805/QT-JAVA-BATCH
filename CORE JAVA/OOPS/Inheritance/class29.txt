@@ -1,0 +1,412 @@
+
+Is-A relationship 
+=================
+Is-A relationship is also known as inheritance.
+
+Using extends keyword we can implements Is-A relationship.
+
+The main objective of Is-A relationship is to provide reusability.
+
+ex:
+---
+class Parent 
+{
+	public void methodOne()
+	{
+		System.out.println("MethodOne");
+	}
+}
+class Child extends Parent 
+{
+	public void methodTwo()
+	{
+		System.out.println("MethodTwo");
+	}
+}
+class Test
+{
+	public static void main(String[] args)
+	{
+		Parent p = new Parent();
+		p.methodOne();
+		
+		Child c = new Child();
+		c.methodOne();
+		c.methodTwo();
+		
+		Parent p1 = new Child();
+		p1.methodOne();
+		
+		Child c1 = new Parent(); // invalid 
+	}
+}
+
+conclusion 
+----------
+Whatever properties are there will parent class by default go to child class.But whatever properties are there for child class they never go back to parent class.
+
+A parent reference can hold child object. But child reference can't hold parent object. 
+
+
+Inheritance 
+===========
+It is a mechanism in which one one class inherits the properties of another class.
+
+Deriving a class in the presence of existing class is called inheritance.
+
+The main objective of inheritance is to provide resuability.
+
+Diagram: class29.1
+
+We have five types of inheritance in java.
+
+1) Single Level Inheritance 
+
+2) Multi Level Inheritance 
+
+3) Multiple Inheritance 
+
+4) Hierarchical Inheritance 
+
+5) Hybrid Inheritance 
+
+1) Single Level Inheritance 
+---------------------------
+If we derived a class in the presence of one base class is called single level inheritance.
+
+Diag:	
+		A  (parent/super/base class)
+		|
+		|
+		B  (child/sub/derived class)
+
+ex:
+---
+class A
+{
+	public void m1()
+	{
+		System.out.println("M1-Method");
+	}
+}
+class B extends A
+{
+	public void m2()
+	{
+		System.out.println("M2-Method");
+	}
+}
+class Test
+{
+	public static void main(String[] args)
+	{
+		A a = new A();
+		a.m1();
+		
+		B b = new B();
+		b.m1();
+		b.m2();
+	}
+}
+
+2) Multi Level Inheritance
+--------------------------
+If we derived a class in the presence of one base class and that class is derived from another base class is called multi level inheritance.
+
+Diag:
+		A
+		|
+		|
+		B
+		|
+		|
+		C 
+
+ex:
+---
+class A
+{
+	public void m1()
+	{
+		System.out.println("M1-Method");
+	}
+}
+class B extends A
+{
+	public void m2()
+	{
+		System.out.println("M2-Method");
+	}
+}
+class C extends B 
+{
+	public void m3()
+	{
+		System.out.println("M3-Method");
+	}
+}
+class Test
+{
+	public static void main(String[] args)
+	{
+		A a = new A();
+		a.m1();
+		
+		B b = new B();
+		b.m1();
+		b.m2();
+		
+		C c = new C();
+		c.m1();
+		c.m2();
+		c.m3();
+	}
+}
+
+3) Multiple Inheritance 
+-----------------------
+In java, we can't extends more than one class simultenously because java does not support multiple inheritance.
+ex:
+	class A 
+	{
+	}
+	class B 	
+	{
+	}
+	class C extends A,B ---> invalid 
+	{
+	}
+
+But interface can extends more then one interface so we achieve multiple inheritance concept through interfaces.
+ex:
+	interface A 
+	{
+	}
+	interface B 
+	{
+	}
+	interface C extends A,B -->valid 
+	{
+	}
+
+If our class does not extends any other class then it is a direct child class of Object class.
+ex:			diag:
+	class A 		Object
+	{			|
+				|
+	}			A 
+
+If our class extends any other class then our class is a indirect child class of Object class.
+ex:				diag:
+	class A 			Object
+	{				|
+	}				|
+	class B 			A
+	{				|
+					|			
+	}				B 
+
+Java does not support cyclic inheritance.
+ex:
+	class A extends B 
+	{
+	}
+	class B extends A 
+	{
+	}
+
+
+
+Q) Why java does not support multiple inheritance?
+
+There is a chance of raising ambiguity problem that's why java does not support multiple inheritance.
+
+ex:
+	P1.m1()				P2.m1()
+	|---------------------------------|
+			|
+			C.m1()
+
+
+4) Hierarchical Inheritance 
+---------------------------
+If we derived multiple classes by using one base class is called hierarchical inheritance.
+
+Diag:
+			A
+			|
+	|-------------------------------|
+	B				C
+
+ex:
+---
+class A
+{
+	public void m1()
+	{
+		System.out.println("M1-Method");
+	}
+}
+class B extends A
+{
+	public void m2()
+	{
+		System.out.println("M2-Method");
+	}
+}
+class C extends A
+{
+	public void m3()
+	{
+		System.out.println("M3-Method");
+	}
+}
+class Test
+{
+	public static void main(String[] args)
+	{
+		A a = new A();
+		a.m1();
+		
+		B b = new B();
+		b.m1();
+		b.m2();
+		
+		C c = new C();
+		c.m1();
+		c.m3();
+	}
+}
+
+5) Hybrid Inheritance
+---------------------
+It is a combination of more than two inheritance.
+Java does not support hybrid inheritance.
+
+Diag:
+			A
+			|
+	|-------------------------------|
+	B				C
+	|-------------------------------|
+			|
+			D 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

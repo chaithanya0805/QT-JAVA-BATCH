@@ -1,0 +1,390 @@
+Q)A car travels 120 km in 2 hours.
+Write a Java program to calculate the average speed of the car.
+
+formulea : 
+		average speed = distance/time;
+
+ex:
+---
+class Example8
+{
+	public static void main(String[] args) 
+	{
+		int distance = 120;
+		int time = 2;
+		
+		int averageSpeed = distance/time;
+		System.out.println("Average speed of the car is = "+averageSpeed);
+	}
+}
+
+
+
+Q) Sunita wakes up at 6:30 AM and reaches school at 7:15 AM.
+Write a Java program to calculate total travel time in minutes.
+
+ex:
+---
+class Example9
+{
+	public static void main(String[] args) 
+	{
+		int startHour = 6;
+		int startMinute = 30;
+		
+		int endHour = 7;
+		int endMinute = 15;
+		
+		int startTimeInMinutes = (startHour * 60) + startMinute;
+		int endTimeInMinutes = (endHour * 60) + endMinute;
+		
+		int totalMinutes = endTimeInMinutes - startTimeInMinutes;
+		
+		System.out.println("Total travel time in "+totalMinutes+" minutes");
+	}
+}
+
+Q) Write a java program to perform swapping of two numbers?
+
+input:
+	10  20
+output:
+	Before swapping a=10 and b=20
+	After swapping a=20 and b=10 
+
+ex:
+---
+import java.util.Scanner;
+class Example10
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Enter the first number :");
+		int a = sc.nextInt();//10
+		
+		System.out.println("Enter the second number :");
+		int b = sc.nextInt();//20
+		
+		System.out.println("Before swapping a="+a+" and b="+b);
+		
+		//logic
+		int temp = a;
+		a = b;
+		b = temp;
+		
+		System.out.println("After swapping a="+a+" and b="+b);
+	}
+}
+
+
+Q) Write a java program to perform swapping of two numbers without using third variable?
+
+input:
+	10  20
+output:
+	Before swapping a=10 and b=20
+	After swapping a=20 and b=10
+
+import java.util.Scanner;
+class Example11
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Enter the first number :");
+		int a = sc.nextInt();//10
+		
+		System.out.println("Enter the second number :");
+		int b = sc.nextInt();//20
+		
+		System.out.println("Before swapping a="+a+" and b="+b);
+		
+		//logic
+		a = a + b;
+		b = a - b;
+		a = a - b;
+		
+		System.out.println("After swapping a="+a+" and b="+b);
+	}
+}
+
+
+Q) Write a java program to convert time in seconds?
+
+input:
+	H = 10
+	M = 30
+	S = 23 
+
+output:
+	37823
+
+ex:
+---
+class Example12
+{
+	public static void main(String[] args) 
+	{
+		int H = 10;
+		int M = 30;
+		int S = 23;
+		
+		int totalSeconds = (H * 3600) + (M * 60) + S;
+		
+		System.out.println(totalSeconds);
+	}
+}
+
+
+Q) Write a java program to seconds in time?
+
+input:
+	37823	
+output:
+	10:30:23 
+
+
+class Example13
+{
+	public static void main(String[] args) 
+	{
+		int totalSeconds = 37823;
+		
+		int H = totalSeconds/3600;
+		int M = (totalSeconds%3600)/60;
+		int S = totalSeconds%60;
+		
+		System.out.println(H+" : "+M+" : "+S);
+	}
+}
+
+
+Q) Write a java program to accept one salary and find out 10% of TDS ?
+
+import java.util.Scanner;
+class Example14
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Enter the salary :");
+		int salary = sc.nextInt();
+		
+		double tds = (double)salary*10/100;
+		
+		System.out.println("10 percent of TDS is ="+tds);
+	}
+}
+
+
+Q) Write a java program to find out CGPA to percentage ?
+
+import java.util.Scanner;
+class Example15
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Enter the CGPA :");
+		double cgpa = sc.nextDouble();
+		
+		double percentage = cgpa * 9.5d;
+		
+		System.out.println("CGPA to percentage is ="+percentage);
+	}
+}
+
+
+Typescasting in java
+====================
+The process of converting from one datatype to another datatype is called typecasting.
+
+In java, we can perform typecasting in two ways.
+
+1) Implicit typecasting 
+
+2) Explicit typecasting 
+
+1) Implicit typecasting 
+-----------------------
+If we want to store small value into a bigger variable then we need to use implicit typecasting.
+
+A compiler is responsible to perform implicit typecasting.
+
+There is no possibility to loss the information.
+
+It is also known as widening or upcasting.
+
+We can perform implicit typecasting as follow.
+
+ex:
+	byte	-->	short
+				-->
+					int -->	long --> float --> double
+				-->
+			char
+
+
+ex:
+---
+class Test
+{
+	public static void main(String[] args) 
+	{
+		byte b = 10;
+		int i = b;
+		System.out.println(i); // 10
+	}
+}
+
+
+ex:
+---
+class Test
+{
+	public static void main(String[] args) 
+	{
+		char ch = 'a';
+		long l = ch;
+		System.out.println(l); // 97
+	}
+}
+
+ex:
+---
+class Test
+{
+	public static void main(String[] args) 
+	{
+		int i=10;
+		double d = i;
+		System.out.println(d); // 10.0
+	}
+}
+
+2) Explicit typecasting 
+------------------------
+If want to store big value into a smaller variable then we need to use explicit typecasting.
+
+A programmer is responsible to perform explicit typecasting.
+
+There is a possibility to loss the information.
+
+It is also known as Narrowing or Downcasting.
+
+We can perform explicit typecasting as follow.
+
+ex:
+	byte	<--	short
+				<--
+					int <--	long <-- float <-- double
+				<--
+			char
+
+ex:1
+-----
+class Test
+{
+	public static void main(String[] args) 
+	{
+		double d = 10.56d;
+		int i = (int)d;
+		System.out.println(i); // 10
+	}
+}
+
+ex:
+---
+class Test
+{
+	public static void main(String[] args) 
+	{
+		int i=65;
+		char ch = (char)i;
+		System.out.println(ch); // A 
+	}
+}
+
+ex:
+---
+class Test
+{
+	public static void main(String[] args) 
+	{
+		int i = 130;
+		byte b = (byte)i;
+		System.out.println(b); // -126 
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

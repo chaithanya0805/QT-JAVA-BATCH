@@ -1,0 +1,91 @@
+Main Method
+===========
+Our program contains main method or not. Either it is properly declared or not. It is not a responsibility of a compiler to check. It is a liability of a JVM to check for main method always at runtime.
+
+If JVM won't find main method then it will throw one runtime error called main method not found.
+
+JVM always check for main method with below signature.
+
+signature:
+---------
+	public static void main(String[] args)
+
+Before Java 21, If we perform any changes in above signature then JVM will throw one runtime error called main method not found.
+
+We can perform following changes in main method.
+
+1) In traditional approach, order of modifiers is not important incase of public    
+   static we can declare static public also.
+   ex:
+	static public void main(String[] args)	
+
+2) In traditional approach,We can replace String[] in following acceptable formats.
+   ex:
+	public static void main(String[] args)
+	public static void main(String []args)
+	public static void main(String args[])
+
+3) In traditional approach, we can replace String[] with var-arg parameter.
+   ex:
+	public static void main(String... args)
+
+4) In traditional approach, we can change args with any java valid identifier.
+   ex:
+	public static void main(String[] qt)
+	
+5) In traditional approach, main method will accept following modifiers.
+   ex:
+	public static synchronized final void main(String[] args)
+
+6) Since Java 21, main method does not need to be public.
+   ex:
+	static void main(String[] args)
+
+7) Since Java 21, It allows instance main method.
+   ex:
+	void main(String[] args)
+
+8) Since Java 21, main method does not need to have String[] args.
+   ex:
+	void main()
+ 
+
+Q) Explain method in java?
+
+public
+------ 
+	JVM wants to call main method from anywhere.
+
+static 
+------
+	JVM wants to call main method without using object reference.
+
+void 
+-----
+	Main method does not return anything to JVM.
+
+main
+-----
+	It is a identifier given to a main method.
+
+
+String[] args 
+-------------
+	It is a command line arguments.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

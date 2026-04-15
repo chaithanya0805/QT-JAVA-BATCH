@@ -1,0 +1,194 @@
+Marker interface
+================
+Interface which does not contain methods and constants is called marker interface.
+
+In general, empty interface is called marker interface.
+
+We have following list of marker interfaces in java.
+ex:
+	Serializable 
+	Cloneable 
+	Remote 
+	and etc.
+
+Using marker interfaces we will get some ability by the JVM.
+
+
+
+
+Abstract class 
+==============
+It is a collection of zero or more abstract methods and concrete/regular methods.
+
+A abstract keyword is applicable for methods and classes but not for variables.
+
+It is not possible to create object for abstract class.
+
+To write the implementation of abstract class we will use sub classes.
+
+It contains only instance variables.
+
+To declare abstract method we need to use abstract keyword.
+
+syntax
+------
+	abstract class class_name
+	{
+		-
+		- //abstract methods 		
+		- //concrete methods 
+		- //instance variables
+		-
+	}
+
+If we know partial implementation then we need to use abstract class.
+
+
+ex:
+---
+abstract class Plan 
+{
+	//instance variable 
+	protected double rate;
+	
+	//abstract method 
+	public abstract void getRate();
+	
+	//concrete method 
+	public void calculateBillAmt(int units)
+	{
+		System.out.println("Total Units :"+units);
+		System.out.println("Total Bill : "+(units*rate));
+	}
+}
+class DomesticPlan extends Plan 
+{
+	@Override
+	public void getRate()
+	{
+		rate = 2.5d;
+	}
+}
+class CommercialPlan extends Plan 
+{
+	@Override
+	public void getRate()
+	{
+		rate = 5.0d;
+	}
+}
+class Test 
+{
+	public static void main(String[] args)
+	{
+		DomesticPlan dp = new DomesticPlan();
+		dp.getRate();
+		dp.calculateBillAmt(250);
+		
+		CommercialPlan cp = new CommercialPlan();
+		cp.getRate();
+		cp.calculateBillAmt(250);
+	}
+}
+
+
+
+
+Q) What is the difference between interface and Abstract class?
+
+Interface				Abstract class
+----------------			-----------------
+To declare interface we will use 	To declare abstract class we will use 
+interface keyword.			abstract keyword.
+
+It is a blue print of a class and it 	It is a collection of zero or more 
+is a collection of abstract methods,	abstract methods and concrete methods.
+default methods, static methods and 
+private methods.
+
+It contains constants.			It contains instance variables.
+
+We can achieve multiple inheritance.	We can't achieve multiple inheritance.
+
+It does not allow constructor.		It allows constructor.
+
+It does not allow blocks.		It allows blocks.
+
+To write the implementation for 	To write the implementation for 
+abstract methods we will use 		abstract methods we will use sub class.
+implementation class.
+
+If we know only specification then	If we know partial implementation then 
+we need to use interface (What to do).	we need to use abstract class.
+
+
+Abstraction Example 
+===================
+
+abstract class Animal 
+{
+	//abstract method 
+	public abstract void sound();
+}
+class Dog extends Animal 
+{
+	@Override 
+	public void sound()
+	{
+		System.out.println("Bow Bow");
+	}
+}
+class Cat extends Animal 
+{
+	@Override
+	public void sound()
+	{
+		System.out.println("Meow Meow");
+	}
+}
+class Test 
+{
+	public static void main(String[] args)
+	{
+		Dog d = new Dog();
+		d.sound();
+		
+		Cat c = new Cat();
+		c.sound();
+	}
+}
+
+ex:
+--
+abstract class Shape 
+{
+	//abstract method 
+	public abstract void draw();
+}
+class Circle extends Shape 
+{
+	@Override
+	public void draw()
+	{
+		System.out.println("It is a circle");
+	}
+}
+class Rectangle extends Shape 
+{
+	@Override
+	public void draw()
+	{
+		System.out.println("It is rectangle");
+	}
+}
+class Test 
+{
+	public static void main(String[] args)
+	{
+		Circle c = new Circle();
+		c.draw();
+		
+		Rectangle r = new Rectangle();
+		r.draw();
+	}
+}

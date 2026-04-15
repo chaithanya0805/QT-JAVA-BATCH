@@ -1,0 +1,561 @@
+Q) What is the difference between ArrayList and Vector?
+
+ArrayList				Vector 
+------------				--------
+It is a non-legacy class.		It is a legacy class.
+
+It is introduced in 1.2 version.	It is introduced in 1.0 version.
+
+Methods are not synchronized.		Methods are synchronized.
+
+At a time multiple threads are allowed	At a time only one thread is allowed
+to execute.Hence ArrayList is not 	to execute.Hence Vector is thread safe.
+thread safe.
+
+Performance is high because there is 	Performance is low because there is a 
+no waiting threads.			waiting threads.
+
+
+Stack 
+======
+It is a child class of Vector class.
+
+If we depend upon Last In First Out order(LIFO) then we need to use Stack.
+
+constructor
+-----------
+	Stack s = new Stack();
+
+Methods
+-------
+1) push(E)
+-------
+	It is used to push the element to stack.
+
+2) pop()
+---------
+	It is used to pop the element from stack.
+
+3) peek()
+---------
+	It returns toppest element of a stack.
+
+4) isEmpty()
+------------
+	It is used to check stack is empty or not.
+
+5) search(E) 
+-------------
+	It returns offset value if element is found otherwise it will return -1.
+
+ex:
+---
+import java.util.*;
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		Stack<String> s = new Stack<>();
+		s.push("A");
+		s.push("B");
+		s.push("C");
+		System.out.println(s); //[A,B,C]
+		
+		s.pop();
+		System.out.println(s); //[A,B]
+		
+		System.out.println(s.peek());// B
+		
+		System.out.println(s.isEmpty()); // false
+		
+		System.out.println(s.search("Z")); // -1
+		
+		System.out.println(s.search("A")); // 2
+	}
+}
+
+Q) Write a java program to check given string is balanced or not?
+
+input:
+	{[()]}
+output:
+	It is a balanced string 
+
+
+import java.util.*;
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		String str="{[()]}";
+		if(isBalanced(str.toCharArray()))
+			System.out.println("It is a balanced string");
+		else
+			System.out.println("It is not a balanced string");
+	}
+	public static boolean isBalanced(char[] carr)
+	{
+		Stack<Character> stack = new Stack<>();	
+		for(char ch : carr)
+		{
+			if(ch=='{' || ch=='[' || ch=='(')
+			{
+				stack.push(ch);
+			}
+			else if(ch==')' && !stack.isEmpty() && stack.peek()=='(')
+			{
+				stack.pop();
+			}
+			else if(ch==']' && !stack.isEmpty() && stack.peek()=='[')
+			{
+				stack.pop();
+			}
+			else if(ch=='}' && !stack.isEmpty() && stack.peek()=='{')
+			{
+				stack.pop();
+			}
+			else
+			{
+				return false;
+			}
+		}
+		return stack.isEmpty();
+	}
+}
+
+Set
+=====
+It is a child interface of Collection interface.
+
+If we want to represent group of individual objects in a single entity where duplicate objects are not allowed and order is not preserved then we need to use Set interface.
+
+Diagram: class43.1
+
+
+ex:
+---
+import java.util.*;
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		Set set = Set.of(6,9,1,5,4,9,5);
+		System.out.println(set); // R.E IllegalArgumentException
+	}
+}
+
+ex:
+----
+import java.util.*;
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		Set set = Set.of(6,9,1,5,4);
+		System.out.println(set); 
+	}
+}
+
+HashSet 
+=======
+The underlying data structure is Hashtable.
+
+Duplicate objects are not allowed.
+
+Insertion order is not preserved because it takes hashcode of an object.
+
+Hetrogeneous objects are allowed.
+
+Null insertion is possible.
+
+ex:
+---
+import java.util.*;
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		HashSet hs = new HashSet();
+		hs.add("one");
+		hs.add("nine");
+		hs.add("six");
+		hs.add("two");
+		System.out.println(hs); // [nine, six, one, two]
+		
+		hs.add("one");
+		System.out.println(hs); // [nine, six, one, two]
+		
+		hs.add(10);
+		System.out.println(hs); // [nine, six, one, 10, two]
+		
+		hs.add(null);
+		System.out.println(hs); // [null, nine, six, one, 10, two]
+	}
+}
+
+ex:
+---
+import java.util.*;
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		HashSet<String> hs = new HashSet<>();
+		hs.add("one");
+		hs.add("nine");
+		hs.add("six");
+		hs.add("two");
+		System.out.println(hs); // [nine, six, one, two]
+		
+		hs.add("one");
+		System.out.println(hs); // [nine, six, one, two]
+		
+		hs.add(null);
+		System.out.println(hs); // [null, nine, six, one, two]
+	}
+}
+
+
+LinkedHashSet 
+=============
+It is a child class of HashSet class.
+LinkedHashSet is exactly same as HashSet class with following differences.
+
+HashSet					LinkedHashSet
+--------------				---------------
+The underlying data structure is 	The underlying data structure is 
+Hashtable.				Hashtable and LinkedList.
+
+Order is not preserved.			Order is preserved.
+
+It is introduced in 1.2 version.	It is introduced in 1.4 version.
+
+ex:
+---
+import java.util.*;
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		LinkedHashSet  lhs = new LinkedHashSet();
+		lhs.add("one");
+		lhs.add("nine");
+		lhs.add("six");
+		lhs.add("two");
+		System.out.println(lhs); // [one,nine,six,two]
+		
+		lhs.add("one");
+		System.out.println(lhs); // [one,nine,six,two]
+		
+		lhs.add(10);
+		System.out.println(lhs); // [one,nine,six,two,10]
+		
+		lhs.add(null);
+		System.out.println(lhs); // [one,nine,six,two,10,null]
+	}
+}
+
+TreeSet 
+========
+The underlying data structure is Balanced Tree.
+
+Duplicate objects are not allowed.
+
+Insertion order is not preserved because it takes sorting order of an object.
+
+Hetrogeneous objects are not allowed otherwise we will get ClassCastException.
+
+Null insertion is not possible otherwise we will get NullPointerException.
+
+ex:
+---
+import java.util.*;
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		TreeSet ts = new TreeSet();
+		ts.add(6);
+		ts.add(10);
+		ts.add(1);
+		ts.add(3);
+		System.out.println(ts); // [1,3,6,10]
+		
+		ts.add(1);
+		System.out.println(ts); // [1,3,6,10]
+		
+		//ts.add("Hi");
+		//System.out.println(ts); // R.E ClassCastException
+		
+		//ts.add(null);
+		//System.out.println(ts); // R.E NullPointerException
+	}
+}
+
+
+
+Q) Write a java program to display distinct elements from given array?
+
+input:
+	1 2 2 4 4 4 4 3 3 3 
+output:
+	1 2 4 3
+
+ex:
+---
+import java.util.*;
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		int[] arr = {1,2,2,4,4,4,4,3,3,3};
+		
+		Set<Integer> set = new LinkedHashSet<>();
+		
+		for(int i : arr)
+		{
+			set.add(i);
+		}
+		
+		for(int i : set)
+		{
+			System.out.print(i+" ");
+		}
+	}
+}
+
+Q) Write a java program to find out number of unique pairs?
+
+input:
+	5
+	john tom 
+	john marry
+	john tom
+	marry ana
+	marry ana
+output:
+	1
+	2
+	2
+	3
+	3
+
+
+import java.util.*;
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt(); // 5 
+		
+		List<Integer> list = new ArrayList<>();
+		Set<String> set = new LinkedHashSet<>();
+		
+		//consume a line 
+		sc.nextLine();
+		
+		for(int i=1;i<=n;i++)
+		{
+			String pair = sc.nextLine().trim();  // john tom 
+			set.add(pair);
+			list.add(set.size());
+		}
+		
+		for(int i : list)
+		{
+			System.out.print(i+" ");
+		}
+	}
+}
+
+
+Map 
+====
+It is not a child interface of Collection interface.
+
+If we want to represent group of individual objects in key and value pair then we need to use Map interface.
+
+Key and value both must be objects.
+
+Key can't be duplicate but value can be duplicate.
+
+Each key and value pair is known as one entry.
+
+Diagram: class43.2
+
+ex:
+---
+import java.util.*;
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		Map<String,String> map = 
+			Map.of("one","raja","nine","steve","six","jose");
+		System.out.println(map);
+	}
+}
+
+ex:
+---
+import java.util.*;
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		Map<String,String> map = Map.of("one","raja","nine","steve","six","jose");
+		
+		for(Map.Entry<String,String> entry : map.entrySet())
+		{
+			System.out.println(entry.getKey()+"="+entry.getValue());	
+		}
+	}
+}
+
+
+
+
+HashMap 
+=======
+The underlying data structure is Hashtable.
+
+Keys can't be duplicate but values can be duplicate.
+
+Insertion order is not preserved because it takes hashcode of a key.
+
+Hetrogeneous objects are allowed for key and value.
+
+Null insertion is possible for both key and value.
+
+ex:
+--
+import java.util.*;
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		HashMap hm = new HashMap();
+		hm.put("one","orrie");
+		hm.put("nine","nelson");
+		hm.put("six","steve");
+		hm.put("five","Frank");
+		System.out.println(hm); 
+		// {nine=nelson, six=steve, one=orrie, five=Frank}
+		
+		hm.put("one","gogo");
+		System.out.println(hm); 
+		// {nine=nelson, six=steve, one=gogo, five=Frank}
+		
+		hm.put(10,100);
+		System.out.println(hm); 
+		//{nine=nelson, six=steve, one=gogo, 10=100, five=Frank}
+		
+		hm.put(null,null);
+		System.out.println(hm);
+		//{null=null, nine=nelson, six=steve, one=gogo, 10=100, five=Frank}
+	}
+}
+
+ex:
+---
+import java.util.*;
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		HashMap<String,String> hm = new HashMap<>();
+		hm.put("one","orrie");
+		hm.put("nine","nelson");
+		hm.put("six","steve");
+		hm.put("five","Frank");
+		System.out.println(hm); 
+		// {nine=nelson, six=steve, one=orrie, five=Frank}
+		
+		hm.put("one","gogo");
+		System.out.println(hm); 
+		// {nine=nelson, six=steve, one=gogo, five=Frank}
+		
+		hm.put(null,null);
+		System.out.println(hm);
+		//{null=null, nine=nelson, six=steve, one=gogo, five=Frank}
+	}
+}
+
+ex:
+---
+import java.util.*;
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		HashMap<String,String> hm = new HashMap<>();
+		hm.put("one","orrie");
+		hm.put("nine","nelson");
+		hm.put("six","steve");
+		hm.put("five","Frank");
+		
+		Set s = hm.keySet();
+		System.out.println(s); // [nine, six, one, five]
+		
+		Collection c = hm.values();
+		System.out.println(c); // [nelson, steve, orrie, Frank]
+		
+		Set s1 = hm.entrySet();
+		System.out.println(s1); 
+		// [nine=nelson, six=steve, one=orrie, five=Frank]
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
